@@ -33,12 +33,19 @@
             return;
         }
         that.isVote = true;
-        Action[bLike ? 'like' : 'dislike']({
+        Action[bLike ? 'like' : 'dislike']({        //bLike true 则点击了like   false 则点击了dislike
             commentId: sId,
             call: function (oResult) {
                 // 调整样式
-                oDv.find('.pressed').removeClass('pressed');
-                oDv.find(bLike ? '.js-like' : '.js-dislike').addClass('pressed');
+                var pressed = oEl.closest('div.js-vote').find('.pressed');
+                // document.write("bLike: "+ bLike+"     pressed: "+pressed);
+                // console.log(pressed+"  "+pressed.toString()+"   "+pressed.hasClass('js-like'))
+                if( (bLike && pressed.hasClass('js-like') ) || (!bLike && pressed.hasClass('js-dislike') ) ){          //判断是否已经点击过此button
+                    oDv.find('.pressed').removeClass('pressed');
+                }else{
+                    oDv.find('.pressed').removeClass('pressed');
+                    oDv.find(bLike ? '.js-like' : '.js-dislike').addClass('pressed');
+                }
                 // 更新数量
                 oDv.closest('div.js-comment').find('span.js-voteCount').html(oResult.msg);
             },

@@ -1,10 +1,8 @@
 package com.nowcoder.wenda.controller;
 
-import com.nowcoder.wenda.model.Comment;
-import com.nowcoder.wenda.model.HostHolder;
-import com.nowcoder.wenda.model.Question;
-import com.nowcoder.wenda.model.ViewObject;
+import com.nowcoder.wenda.model.*;
 import com.nowcoder.wenda.service.CommentService;
+import com.nowcoder.wenda.service.LikeService;
 import com.nowcoder.wenda.service.QuestionService;
 import com.nowcoder.wenda.service.UserService;
 import com.nowcoder.wenda.util.WendaUtil;
@@ -31,6 +29,9 @@ public class QuestionController {
 
     @Autowired
     HostHolder hostHolder;
+
+    @Autowired
+    LikeService likeService;
 
     @Autowired
     CommentService commentService;
@@ -71,6 +72,12 @@ public class QuestionController {
         for(Comment comment: commentlist){
             ViewObject vo = new ViewObject();
             vo.set("comment",comment);
+            if(hostHolder.getUser() == null){
+                vo.set("liked", 0);     //查询用户是否喜欢，此情况为未登录
+            }else{
+                vo.set("liked",likeService.getLikeStatus(hostHolder.getUser().getId(), EntityType.ENTITY_COMMENT,comment.getId()));
+            }
+            vo.set("likeCount",likeService.getLikeCount(EntityType.ENTITY_COMMENT,comment.getId()));
             vo.set("user",userService.getUser(comment.getUserId()));
             comments.add(vo);
         }
