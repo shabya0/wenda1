@@ -4,8 +4,12 @@ import com.nowcoder.wenda.model.HostHolder;
 import com.nowcoder.wenda.util.JedisAdapter;
 import com.nowcoder.wenda.util.RedisKeyUtil;
 import com.nowcoder.wenda.util.WendaUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Random;
 
 @Service
 public class LikeService {
@@ -14,6 +18,7 @@ public class LikeService {
 
     @Autowired
     HostHolder hostHolder;
+    private Logger logger = LoggerFactory.getLogger(LikeService.class);
     public int getLikeStatus(int userId, int entityType, int entityId){     //获取当前对这个问题或回复的喜欢与否
         String likeKey = RedisKeyUtil.getLikeKey(entityType, entityId);
         if(jedisAdapter.sismember(likeKey, String.valueOf(userId))){        //若表示喜欢的set中已经包含这个对象 返回 1
@@ -25,6 +30,7 @@ public class LikeService {
 
     public long getLikeCount(int entityType, int entityId){         //返回有多少用户like这个问题或回复
         String likeKey= RedisKeyUtil.getLikeKey(entityType, entityId);
+        logger.error("likeKey: "+likeKey);
         return jedisAdapter.scard(likeKey);
     }
 

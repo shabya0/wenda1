@@ -10,6 +10,7 @@ public class WendaUtil {
     private  static final Logger logger = LoggerFactory.getLogger(WendaUtil.class);
 
     public static int ANONYMOUS_USERID = 0;     //未登录或匿名用户id
+    public static int SYSTEM_USERID = -1;       //管理员id
 
     public static String getJSONString(int code){
         JSONObject json = new JSONObject();

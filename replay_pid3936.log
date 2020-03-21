@@ -799,7 +799,7 @@ instanceKlass org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfi
 instanceKlass org/springframework/web/accept/ContentNegotiationManagerFactoryBean
 instanceKlass org/springframework/web/bind/support/DefaultSessionAttributeStore
 instanceKlass org/springframework/core/ReactiveAdapterRegistry
-instanceKlass org/springframework/web/context/request/async/DeferredResultProcessingInterceptor
+instanceKlass org/springframework/web/context/request/com.nowcoder.wenda.async/DeferredResultProcessingInterceptor
 instanceKlass org/springframework/util/ConcurrencyThrottleSupport
 instanceKlass org/springframework/util/concurrent/ListenableFuture
 instanceKlass org/springframework/web/accept/HeaderContentNegotiationStrategy
@@ -1533,12 +1533,12 @@ instanceKlass org/springframework/web/servlet/FlashMapManager
 instanceKlass org/springframework/web/servlet/RequestToViewNameTranslator
 instanceKlass org/springframework/web/servlet/ThemeResolver
 instanceKlass org/springframework/web/context/request/AbstractRequestAttributes
-instanceKlass org/springframework/web/context/request/async/WebAsyncManager
+instanceKlass org/springframework/web/context/request/com.nowcoder.wenda.async/WebAsyncManager
 instanceKlass org/springframework/web/servlet/ModelAndView
 instanceKlass org/springframework/web/servlet/HandlerExecutionChain
 instanceKlass javax/servlet/http/HttpServletRequest
 instanceKlass org/springframework/context/i18n/LocaleContext
-instanceKlass org/springframework/web/context/request/async/CallableProcessingInterceptor
+instanceKlass org/springframework/web/context/request/com.nowcoder.wenda.async/CallableProcessingInterceptor
 instanceKlass javax/servlet/http/HttpServletResponse
 instanceKlass org/springframework/boot/autoconfigure/web/servlet/MultipartProperties$$Lambda$330
 instanceKlass org/springframework/boot/autoconfigure/web/servlet/MultipartProperties$$Lambda$329
@@ -3284,8 +3284,8 @@ instanceKlass com/fasterxml/jackson/core/io/SerializedString
 instanceKlass com/fasterxml/jackson/core/util/DefaultPrettyPrinter
 instanceKlass com/fasterxml/jackson/core/util/Instantiatable
 instanceKlass org/springframework/core/SerializableTypeWrapper$MethodInvokeTypeProvider
-instanceKlass com/fasterxml/jackson/core/async/ByteArrayFeeder
-instanceKlass com/fasterxml/jackson/core/async/NonBlockingInputFeeder
+instanceKlass com/fasterxml/jackson/core/com.nowcoder.wenda.async/ByteArrayFeeder
+instanceKlass com/fasterxml/jackson/core/com.nowcoder.wenda.async/NonBlockingInputFeeder
 instanceKlass java/lang/reflect/Proxy$1
 instanceKlass java/lang/reflect/Proxy$KeyX
 instanceKlass org/springframework/core/SerializableTypeWrapper$TypeProxyInvocationHandler

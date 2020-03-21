@@ -38,8 +38,8 @@ public class CommentController {
             if (hostHolder.getUser() != null) {
                 comment.setUserId(hostHolder.getUser().getId());
             } else {
-                comment.setUserId(WendaUtil.ANONYMOUS_USERID);
-                //return "redirect:/reglogin";      //重定向登录页面
+//                comment.setUserId(WendaUtil.ANONYMOUS_USERID);
+                return "redirect:/reglogin";      //重定向登录页面
             }
             comment.setCreatedDate(new Date());
             comment.setEntityType(0);       //0为问题评论 1为评论回复

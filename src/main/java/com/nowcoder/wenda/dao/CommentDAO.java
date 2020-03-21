@@ -38,4 +38,8 @@ public interface CommentDAO {
     @Select({"select count(id) from ", table_name,
             " where entity_id=#{entityId} and entity_type=#{entityType} order by created_date desc"})        //使用entityid entityType查找问题
     int getCommentCount(@Param("entityId") int entityId, @Param("entityType") int entityType);
+
+    @Select({"select * from ", table_name, " where id =#{id}"})
+    Comment getCommentById(int id);
+
 }

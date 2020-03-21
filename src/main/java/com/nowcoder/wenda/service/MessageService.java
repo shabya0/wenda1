@@ -2,6 +2,7 @@ package com.nowcoder.wenda.service;
 
 import com.nowcoder.wenda.controller.CommentController;
 import com.nowcoder.wenda.dao.MessageDAO;
+import com.nowcoder.wenda.model.HostHolder;
 import com.nowcoder.wenda.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,13 +18,21 @@ public class MessageService {
     @Autowired
     SensitiveService sensitiveService;
 
+    @Autowired
+    HostHolder hostHolder;
+
     public int addMessage(Message message){
         message.setContent(HtmlUtils.htmlEscape(message.getContent()));
         message.setContent(sensitiveService.filter(message.getContent()));
         return messageDAO.addMessage(message)>0? message.getId(): 0;
     }
 
+    public Message getLastedByConversationId(String conversationId){
+        return messageDAO.getLastedByConversationId(conversationId);
+    }
+
     public List<Message> getConversationDetail(String conversationId, int offset, int limit){
+        messageDAO.setStatus(conversationId, hostHolder.getUser().getId());       //设置has_read为1，标志为已读
         return messageDAO.getConversationDetail(conversationId, offset, limit);
     }
 

@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.*;
 
 import javax.naming.BinaryRefAddr;
+import java.io.IOException;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class JedisAdapter implements InitializingBean {
@@ -84,6 +87,205 @@ public class JedisAdapter implements InitializingBean {
         return false;
     }
 
+    public long lpush(String key, String value){
+        Jedis jedis = null;
+        try{
+            jedis = pool.getResource();
+            return jedis.lpush(key, value);
+        }catch (Exception e){
+            logger.error("lpush发生错误： "+e.getMessage());
+        }finally {
+            if(jedis != null)
+                jedis.close();
+        }
+        return 0;
+    }
+
+    public String lpop(String key, String value){
+        Jedis jedis = null;
+        try{
+            jedis = pool.getResource();
+            return jedis.lpop(key);
+        }catch (Exception e){
+            logger.error("lpop发生错误 "+e.getMessage());
+        }finally {
+            if(jedis != null){
+                jedis.close();
+            }
+        }
+        return null;
+    }
+
+    public long lpushx(String key, String value){       //key存在时插入value， 否则不进行操作
+        Jedis jedis = null;
+        try{
+            jedis = pool.getResource();
+            return jedis.lpushx(key, value);
+        }catch (Exception e){
+            logger.error("lpushx发生错误 "+e.getMessage());
+        }finally {
+            if(jedis != null){
+                jedis.close();
+            }
+        }
+        return 0;
+    }
+
+    public List<String> lrange(String key, int start, int end){
+        Jedis jedis = null;
+        try{
+            jedis = pool.getResource();
+            return jedis.lrange(key, start, end);
+        }catch (Exception e){
+            logger.error("lrange发生错误 "+e.getMessage());
+        }finally {
+            if(jedis != null){
+                jedis.close();
+            }
+        }
+        return null;
+    }
+
+    public List<String> brpop(int timeout, String key) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.brpop(timeout, key);
+        } catch (Exception e) {
+            logger.error("发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return null;
+    }
+
+    public long zadd(String key, double score, String value) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.zadd(key, score, value);
+        } catch (Exception e) {
+            logger.error("zadd发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return 0;
+    }
+
+    public long zrem(String key, String value) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.zrem(key, value);
+        } catch (Exception e) {
+            logger.error("zrem发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return 0;
+    }
+
+    public Jedis getJedis() {
+        return pool.getResource();
+    }
+
+    public Transaction multi(Jedis jedis) {
+        try {
+            return jedis.multi();
+        } catch (Exception e) {
+            logger.error("multi发生异常" + e.getMessage());
+        } finally {
+        }
+        return null;
+    }
+
+    public List<Object> exec(Transaction tx, Jedis jedis) {
+        try {
+            return tx.exec();
+        } catch (Exception e) {
+            logger.error("exec发生异常" + e.getMessage());
+            tx.discard();
+        } finally {
+            if (tx != null) {
+                try {
+                    tx.close();
+                } catch (Exception ioe) {       //IOException
+                    // ..
+                }
+            }
+
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return null;
+    }
+
+    public Set<String> zrange(String key, int start, int end) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.zrange(key, start, end);
+        } catch (Exception e) {
+            logger.error("zrange发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return null;
+    }
+
+    public Set<String> zrevrange(String key, int start, int end) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.zrevrange(key, start, end);
+        } catch (Exception e) {
+            logger.error("set发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return null;
+    }
+
+    public long zcard(String key) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.zcard(key);
+        } catch (Exception e) {
+            logger.error("zcard发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return 0;
+    }
+
+    public Double zscore(String key, String member) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.zscore(key, member);
+        } catch (Exception e) {
+            logger.error("zscore发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return null;
+    }
 
     public static void main(String[] args) {
         Jedis jedis = new Jedis("redis://localhost:6379/9");
