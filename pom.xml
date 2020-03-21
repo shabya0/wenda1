@@ -157,7 +157,24 @@
 			<artifactId>jedis</artifactId>
 			<version>3.2.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+		<!--<dependency>-->
+			<!--<groupId>javax.mail</groupId>-->
+			<!--<artifactId>javax.mail-api</artifactId>-->
+			<!--<version>1.6.2</version>-->
+		<!--</dependency>-->
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+
+
 	</dependencies>
+
+
 
 	<build>
 		<!-- 配置将哪些资源文件(静态文件/模板文件/mapper文件)加载到tomcat输出目录里 -->

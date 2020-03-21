@@ -10,6 +10,8 @@ public class EventModel {
     private int entityId;
     private int entityOwnerId;
 
+    private Map<String, String> exts = new HashMap<String, String>();
+
     public  EventModel(EventType type){
         this.type = type;
     }
@@ -73,7 +75,7 @@ public class EventModel {
 
 
 
-    private Map<String, String> exts = new HashMap<String, String>();
+
 
     public EventModel setExt(String key, String value){
         exts.put(key, value);

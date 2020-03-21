@@ -1,5 +1,8 @@
 package com.nowcoder.wenda.controller;
 
+import com.nowcoder.wenda.async.EventModel;
+import com.nowcoder.wenda.async.EventProducer;
+import com.nowcoder.wenda.async.EventType;
 import com.nowcoder.wenda.dao.UserDAO;
 import com.nowcoder.wenda.model.HostHolder;
 import com.nowcoder.wenda.service.UserService;
@@ -21,10 +24,16 @@ import java.util.Map;
 public class LoginController {
     @Autowired
     UserDAO userDAO;
+
     @Autowired
     UserService userService;
+
     @Autowired
     HostHolder hostHolder;
+
+    @Autowired
+    EventProducer eventProducer;
+
     private static final Logger logger = LoggerFactory.getLogger(SettingController.class);
     @RequestMapping(path = {"/reg/"}, method = {RequestMethod.POST})
     public String reg(Model model,
@@ -52,6 +61,25 @@ public class LoginController {
             cookie.setMaxAge(3600*24*30*1000);         //设置cookiecu存活时间 1 month
             cookie.setPath("/");
             response.addCookie(cookie);     //添加cookie返回页面
+
+            try {
+                logger.info("map_username: " + map.containsKey("username"));            //获取map中的用户名 101行map.put
+                EventModel m = new EventModel(EventType.LOGIN);
+                m.setExt("email", "2680464655@qq.com");
+                m.setExt("username", map.get("username"));
+                logger.info("userId"+map.get("userId"));
+//                m.setActorId(Integer.parseInt(map.get("userId")));
+//                m.setActorId(hostHolder.getUser().getId());
+                logger.info("3");
+                eventProducer.fireEvent(m);
+//                eventProducer.fireEvent(new EventModel(EventType.LOGIN)
+//                        .setExt("username", map.get("username")).setExt("email", "2680464655@qq.com")   //邮箱地址如果要要在101行put进map， 用户注册也要有邮箱
+//                        .setActorId(Integer.parseInt(map.get("userId"))));
+                logger.info("fireEvent after");
+            }catch (Exception e){
+                logger.error("发送邮件异常： "+ e.getMessage());
+            }
+
             if(StringUtils.isNotBlank(next)){     //是否未登录跳转
                 return "redirect:"+next;
             }
@@ -82,6 +110,8 @@ public class LoginController {
                       HttpServletResponse response){
         try {
             Map<String, String> map = userService.login(username, password);        //验证用户名，密码
+            map.put("username", username);
+
             logger.info("login  ",next);
             return isContainsTicket(map, response,model,next);
         }catch (Exception e){

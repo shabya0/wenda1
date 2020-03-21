@@ -37,7 +37,7 @@
                             <input type="password" name="password" aria-label="密码" placeholder="密码" required="">
                         </div>
                     </div>
-                    <input type="hidden" name="next" value="${next}"/>     <!-- 返回跳转 -->
+                    <input type="hidden" name="next" value="${next!'/'}"/>     <!-- 返回跳转 -->
                     <div class="button-wrapper command clearfix">
                         <button class="sign-button submit" type="submit" onclick="form=document.getElementById('regloginform');form.action='/login/'">登录</button>
                         <button class="sign-button submit" type="submit" onclick="form=document.getElementById('regloginform');form.action='/reg/'">注册</button>
