@@ -63,21 +63,16 @@ public class LoginController {
             response.addCookie(cookie);     //添加cookie返回页面
 
             try {
-                logger.info("map_username: " + map.containsKey("username"));            //获取map中的用户名 101行map.put
-                EventModel m = new EventModel(EventType.LOGIN);
-                m.setExt("email", "2680464655@qq.com");
-                m.setExt("username", map.get("username"));
-                logger.info("userId"+map.get("userId"));
+//                EventModel m = new EventModel(EventType.LOGIN);
+//                m.setExt("email", "2680464655@qq.com");
+//                m.setExt("username", map.get("username"));
 //                m.setActorId(Integer.parseInt(map.get("userId")));
 //                m.setActorId(hostHolder.getUser().getId());
-                logger.info("3");
-                eventProducer.fireEvent(m);
-//                eventProducer.fireEvent(new EventModel(EventType.LOGIN)
-//                        .setExt("username", map.get("username")).setExt("email", "2680464655@qq.com")   //邮箱地址如果要要在101行put进map， 用户注册也要有邮箱
-//                        .setActorId(Integer.parseInt(map.get("userId"))));
-                logger.info("fireEvent after");
+//                eventProducer.fireEvent(m);
+                eventProducer.fireEvent(new EventModel(EventType.LOGIN)         //获取map中的用户名 101行map.put
+                        .setExt("username", map.get("username")).setExt("email", "2680464655@qq.com"));   //邮箱地址如果要要在101行put进map， 用户注册也要有邮箱
             }catch (Exception e){
-                logger.error("发送邮件异常： "+ e.getMessage());
+                logger.error("获取邮件接收人异常： "+ e.getMessage());
             }
 
             if(StringUtils.isNotBlank(next)){     //是否未登录跳转
