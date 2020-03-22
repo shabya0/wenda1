@@ -65,7 +65,7 @@ public class LoginController {
             try {
                 logger.info("map_username: " + map.containsKey("username"));            //获取map中的用户名 101行map.put
                 EventModel m = new EventModel(EventType.LOGIN);
-                m.setExt("email", "2680464655@qq.com");
+                m.setExt("email", "xx@qq.com");
                 m.setExt("username", map.get("username"));
                 logger.info("userId"+map.get("userId"));
 //                m.setActorId(Integer.parseInt(map.get("userId")));
@@ -73,7 +73,7 @@ public class LoginController {
                 logger.info("3");
                 eventProducer.fireEvent(m);
 //                eventProducer.fireEvent(new EventModel(EventType.LOGIN)
-//                        .setExt("username", map.get("username")).setExt("email", "2680464655@qq.com")   //邮箱地址如果要要在101行put进map， 用户注册也要有邮箱
+//                        .setExt("username", map.get("username")).setExt("email", "xx@qq.com")   //邮箱地址如果要要在101行put进map， 用户注册也要有邮箱
 //                        .setActorId(Integer.parseInt(map.get("userId"))));
                 logger.info("fireEvent after");
             }catch (Exception e){
