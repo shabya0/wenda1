@@ -28,7 +28,7 @@ public class MailSender implements InitializingBean {
                                         String templets, Map<String, Object> model) {
         try {
             String nick = MimeUtility.encodeText("登录");
-            InternetAddress from = new InternetAddress(nick + "<xx@qq.com>");
+            InternetAddress from = new InternetAddress(nick + "<1574033296@qq.com>");
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
 
@@ -53,8 +53,8 @@ public class MailSender implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         mailSender = new JavaMailSenderImpl();
-        mailSender.setUsername("xxx@qq.com");
-        mailSender.setPassword("xxxx");     //邮箱授权码，账号密码修改会使该码过期
+        mailSender.setUsername("2680464655@qq.com");
+        mailSender.setPassword("rvoadgwvweazibgd");     //邮箱授权码，账号密码修改会使该码过期
 //        mailSender.setHost("smtp.exmail.qq.com");
         mailSender.setHost("smtp.qq.com");
         mailSender.setPort(465);
