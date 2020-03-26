@@ -4,8 +4,6 @@ import com.nowcoder.wenda.model.Comment;
 import com.nowcoder.wenda.model.HostHolder;
 import com.nowcoder.wenda.service.CommentService;
 import com.nowcoder.wenda.service.QuestionService;
-import com.nowcoder.wenda.util.WendaUtil;
-import org.aspectj.lang.annotation.Around;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

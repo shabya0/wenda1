@@ -29,7 +29,7 @@ public class RedisKeyUtil {
     }
 
     // 每个用户对某类实体的关注key
-    public static String getFolloweeKey(int userId, int entityType) {
+    public static String getFolloweeKey(int entityType,int userId ) {
         return BIZ_FOLLOWEE + SPLIT + String.valueOf(userId) + SPLIT + String.valueOf(entityType);
     }
 

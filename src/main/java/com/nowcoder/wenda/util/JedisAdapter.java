@@ -42,6 +42,7 @@ public class JedisAdapter implements InitializingBean {
         return 0;
     }
 
+    //获取集合的成员数
     public long scard(String key){          //key的元素的总个数
         Jedis jedis = null;
         try{
@@ -57,6 +58,7 @@ public class JedisAdapter implements InitializingBean {
         return 0;
     }
 
+    //移除集合中一个或多个成员
     public long srem(String key, String value){         //删除
         Jedis jedis = null;
         try{
@@ -72,6 +74,7 @@ public class JedisAdapter implements InitializingBean {
         return 0;
     }
 
+    //判断 member 元素是否是集合 key 的成员
     public boolean sismember(String key, String value){     // 查询是否包含这个键值对
         Jedis jedis = null;
         try{
@@ -87,6 +90,7 @@ public class JedisAdapter implements InitializingBean {
         return false;
     }
 
+    //将一个或多个值插入到列表头部
     public long lpush(String key, String value){
         Jedis jedis = null;
         try{
@@ -101,6 +105,7 @@ public class JedisAdapter implements InitializingBean {
         return 0;
     }
 
+    //移出并获取列表的第一个元素
     public String lpop(String key, String value){
         Jedis jedis = null;
         try{
@@ -116,6 +121,7 @@ public class JedisAdapter implements InitializingBean {
         return null;
     }
 
+    //将一个值插入到已存在的列表头部,列表不存在时操作无效。
     public long lpushx(String key, String value){       //key存在时插入value， 否则不进行操作
         Jedis jedis = null;
         try{
@@ -131,6 +137,7 @@ public class JedisAdapter implements InitializingBean {
         return 0;
     }
 
+    //
     public List<String> lrange(String key, int start, int end){
         Jedis jedis = null;
         try{
@@ -146,6 +153,7 @@ public class JedisAdapter implements InitializingBean {
         return null;
     }
 
+    //移出并获取列表的最后一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。
     public List<String> brpop(int timeout, String key) {
         Jedis jedis = null;
         try {
@@ -161,6 +169,7 @@ public class JedisAdapter implements InitializingBean {
         return null;
     }
 
+    //向有序集合添加一个或多个成员，或者更新已存在成员的分数
     public long zadd(String key, double score, String value) {
         Jedis jedis = null;
         try {
@@ -176,6 +185,7 @@ public class JedisAdapter implements InitializingBean {
         return 0;
     }
 
+    //移除有序集合中的一个或多个成员
     public long zrem(String key, String value) {
         Jedis jedis = null;
         try {
@@ -195,9 +205,10 @@ public class JedisAdapter implements InitializingBean {
         return pool.getResource();
     }
 
+    //开启事务
     public Transaction multi(Jedis jedis) {
         try {
-            return jedis.multi();
+            return jedis.multi();       //redis的事务
         } catch (Exception e) {
             logger.error("multi发生异常" + e.getMessage());
         } finally {
@@ -205,18 +216,20 @@ public class JedisAdapter implements InitializingBean {
         return null;
     }
 
+    //执行事务
     public List<Object> exec(Transaction tx, Jedis jedis) {
         try {
             return tx.exec();
         } catch (Exception e) {
             logger.error("exec发生异常" + e.getMessage());
             tx.discard();
-        } finally {
+        } finally {     //关闭事务
             if (tx != null) {
                 try {
                     tx.close();
-                } catch (Exception ioe) {       //IOException
+                } catch (Exception e) {       //IOException
                     // ..
+                    logger.error("tx.close发生异常" + e.getMessage());
                 }
             }
 
@@ -227,6 +240,7 @@ public class JedisAdapter implements InitializingBean {
         return null;
     }
 
+    //通过索引区间返回有序集合指定区间内的成员
     public Set<String> zrange(String key, int start, int end) {
         Jedis jedis = null;
         try {
@@ -242,6 +256,7 @@ public class JedisAdapter implements InitializingBean {
         return null;
     }
 
+    //返回有序集中指定区间内的成员，通过索引，分数从高到低
     public Set<String> zrevrange(String key, int start, int end) {
         Jedis jedis = null;
         try {
@@ -257,6 +272,7 @@ public class JedisAdapter implements InitializingBean {
         return null;
     }
 
+    //获取有序集合的成员数
     public long zcard(String key) {
         Jedis jedis = null;
         try {
@@ -272,6 +288,7 @@ public class JedisAdapter implements InitializingBean {
         return 0;
     }
 
+    //返回有序集中，成员的分数值
     public Double zscore(String key, String member) {
         Jedis jedis = null;
         try {

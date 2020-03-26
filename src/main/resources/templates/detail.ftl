@@ -31,31 +31,33 @@
             </div>
             <div class="zm-side-section">
                 <div class="zm-side-section-inner" id="zh-question-side-header-wrap">
-                    <#if followed??>
-                    <button class="follow-button zg-follow zg-btn-white js-follow-question" data-id="${question.id}"
-                            data-status="1">
-                        取消关注
-                    </button>
+                    <#if followed>
+                        <button class="follow-button zg-follow zg-btn-white js-follow-question" data-id="${question.id}"
+                                data-status="1">
+                            取消关注
+                        </button>
                     <#else>
-                    <button class="follow-button zg-follow zg-btn-green js-follow-question" data-id="${question.id}">
-                        关注问题
-                    </button>
+                        <button class="follow-button zg-follow zg-btn-green js-follow-question" data-id="${question.id}">
+                            关注问题
+                        </button>
                     </#if>
 
+
                     <#--关注者列表-->
-                    <#--<div class="zh-question-followers-sidebar">-->
-                        <#--<div class="zg-gray-normal">-->
-                            <#--<a href="javascript:void(0);"><strong class="js-user-count">${followUsers.size()!0}</strong></a>人关注该问题-->
-                        <#--</div>-->
-                        <#--<div class="list zu-small-avatar-list zg-clear js-user-list">-->
-                            <#--<#list followUsers as vo>-->
-                            <#--<a class="zm-item-link-avatar js-user-${vo.id}" href="/user/${vo.id}"-->
-                               <#--data-original_title="${vo.name}">-->
-                                <#--<img src="${vo.headUrl}"-->
-                                     <#--class="zm-item-img-avatar"></a>-->
-                            <#--</#list>-->
-                        <#--</div>-->
-                    <#--</div>-->
+                    <div class="zh-question-followers-sidebar">
+                        <div class="zg-gray-normal">
+                            <!--人数 $ followUsers.size()}-->
+                            <a href="javascript:void(0);"><strong class="js-user-count">${size} </strong></a>人关注该问题
+                        </div>
+                        <div class="list zu-small-avatar-list zg-clear js-user-list">
+                            <#list followUsers as vo>
+                            <a class="zm-item-link-avatar js-user-${vo.id}" href="/user/${vo.id}"
+                               data-original_title="${vo.name}">
+                                <img src="${vo.headUrl}" class="zm-item-img-avatar"></a>
+                            </#list>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div id="zh-question-answer-wrap" data-pagesize="10" class="zh-question-answer-wrapper navigable"
@@ -102,11 +104,11 @@
                         </div>
 
                         <#--评论点赞人数-->
-                        <#--<div class="zm-item-vote-info">-->
-                                <#--<span class="voters text">-->
-                                    <#--<a href="" class="more text"><span class="js-voteCount">${comment.likeCount}</span>&nbsp;人赞同</a>-->
-                                <#--</span>-->
-                        <#--</div>-->
+                        <div class="zm-item-vote-info">
+                                <span class="voters text">
+                                    <a href="" class="more text"><span class="js-voteCount">${comment.likeCount}</span>&nbsp;人赞同</a>
+                                </span>
+                        </div>
                     </div>
                     <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="6727688" data-action="/answer/content" data-author-name="营销岛" data-entry-url="/question/36301524/answer/66862039">
 

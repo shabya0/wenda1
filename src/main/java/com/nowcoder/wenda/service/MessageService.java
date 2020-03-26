@@ -1,6 +1,4 @@
 package com.nowcoder.wenda.service;
-
-import com.nowcoder.wenda.controller.CommentController;
 import com.nowcoder.wenda.dao.MessageDAO;
 import com.nowcoder.wenda.model.HostHolder;
 import com.nowcoder.wenda.model.Message;
@@ -22,7 +20,8 @@ public class MessageService {
     HostHolder hostHolder;
 
     public int addMessage(Message message){
-        message.setContent(HtmlUtils.htmlEscape(message.getContent()));
+        if(message.getContent() !=null)
+            message.setContent(HtmlUtils.htmlEscape(message.getContent()));
         message.setContent(sensitiveService.filter(message.getContent()));
         return messageDAO.addMessage(message)>0? message.getId(): 0;
     }

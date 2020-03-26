@@ -7677,7 +7677,7 @@ td.goog-date-picker-selected {
 }
 .zm-profile-section-item {
     position:relative;
-    padding:12px 0
+    padding:42px 0
 }
 .zm-profile-section-item+.zm-profile-section-item {
     border-top:1px dotted #EEE
@@ -7998,6 +7998,29 @@ a>.invisible {
     position:absolute;
     left:0
 }
+
+/*debug 头像下拉框*/
+.top-nav-dropdown:hover {
+    display: block;
+    margin: 0;
+    position: absolute;
+    left: 0
+}
+
+body div div div ul ul{
+    display: block;
+    margin: 0;
+    position: absolute;
+    left: 0
+}
+
+.body div div div ul ul:hover{
+    display: block;
+    margin: 0;
+    position: absolute;
+    left: 0
+}
+
 .top-nav-dropdown li {
     margin:0;
     list-style:none

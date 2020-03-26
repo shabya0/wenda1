@@ -238,6 +238,12 @@ object:not([data]) {
     clear: both
 }
 
+
+
+.zg-right button{
+    height: 30px;
+    width: 50px;
+}
 .hide-text {
     font: 0/0 a;
     color: transparent;
@@ -9886,6 +9892,13 @@ a>.invisible {
     position: absolute;
     left: 0
 }
+/*下拉动作，下级菜单显示为可见  debug*/
+.top-nav-profile ul ul:hover {
+    display: block;
+    margin: 0;
+    position: absolute;
+    left: 0
+}
 
 .top-nav-dropdown li {
     margin: 0;
@@ -16606,7 +16619,10 @@ html.no-touchevents .carousel:hover .carousel-navigation-btn {
     box-shadow: 0 1px 0 #f2f4f5;
 }
 .zm-profile-section-list {
-    padding: 0 14px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 35px;
+    padding-bottom: 20px;
 }
 .zm-profile-section-head {
     overflow: hidden;

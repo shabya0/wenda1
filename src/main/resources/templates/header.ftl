@@ -18,12 +18,12 @@
                     </span>
             </a>
             <ul class="top-nav-dropdown" id="top-nav-profile-dropdown" aria-labelledby=":0">
-                <li>
+                <li class="mypage">
                     <a href="/user/${user.id}" tabindex="-1" id=":1">
                         <i class="zg-icon zg-icon-dd-home"></i>我的主页
                     </a>
                 </li>
-                <li>
+                <li class="letter">
                     <a href="/msg/list" tabindex="-1" id=":2">
                         <i class="zg-icon zg-icon-dd-pm"></i>私信
                         <span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number" style="visibility:hidden" data-count="0">
@@ -35,7 +35,7 @@
                         <#--<i class="zg-icon zg-icon-dd-settings"></i>设置-->
                     <#--</a>-->
                 <#--</li>-->
-                <li>
+                <li class="logout">
                     <a href="/logout" tabindex="-1" id=":4">
                         <i class="zg-icon zg-icon-dd-logout"></i>退出
                     </a>
