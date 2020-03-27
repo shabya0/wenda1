@@ -25,7 +25,6 @@ import java.util.Map;
 public class FollowerController {
     @Autowired
     HostHolder hostHolder;
-
     @Autowired
     EventProducer eventProducer;
 
@@ -90,7 +89,7 @@ public class FollowerController {
         //关注某个问题
         boolean ret = followService.follow(hostHolder.getUser().getId(), EntityType.ENTITY_QUESTION, questionId);
         eventProducer.fireEvent(new EventModel(EventType.FOLLOW).setActorId(hostHolder.getUser().getId())
-                .setEntityType(EntityType.ENTITY_USER).setEntityId(questionId).setEntityOwnerId(q.getUserId()));
+                .setEntityType(EntityType.ENTITY_QUESTION).setEntityId(questionId).setEntityOwnerId(q.getUserId()));
 
         Map<String, Object> info = new HashMap<String, Object>();
         info.put("headUrl", hostHolder.getUser().getHeadUrl());
@@ -116,7 +115,7 @@ public class FollowerController {
         //取消关注某个问题
         boolean ret = followService.unfollow(hostHolder.getUser().getId(), EntityType.ENTITY_QUESTION, questionId);
         eventProducer.fireEvent(new EventModel(EventType.FOLLOW).setActorId(hostHolder.getUser().getId())
-                .setEntityType(EntityType.ENTITY_USER).setEntityId(questionId).setEntityOwnerId(q.getUserId()));
+                .setEntityType(EntityType.ENTITY_QUESTION).setEntityId(questionId).setEntityOwnerId(q.getUserId()));
 
         Map<String, Object> info = new HashMap<String, Object>();
         info.put("headUrl", hostHolder.getUser().getHeadUrl());

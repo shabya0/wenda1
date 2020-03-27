@@ -1,5 +1,8 @@
 package com.nowcoder.wenda.controller;
 
+import com.nowcoder.wenda.async.EventModel;
+import com.nowcoder.wenda.async.EventProducer;
+import com.nowcoder.wenda.async.EventType;
 import com.nowcoder.wenda.model.Comment;
 import com.nowcoder.wenda.model.HostHolder;
 import com.nowcoder.wenda.service.CommentService;
@@ -25,6 +28,9 @@ public class CommentController {
     @Autowired
     QuestionService questionService;
 
+    @Autowired
+    EventProducer eventProducer;
+
     private static Logger logger = LoggerFactory.getLogger(CommentController.class);
 
     @RequestMapping(path = {"/addComment"},method = {RequestMethod.POST})
@@ -46,6 +52,9 @@ public class CommentController {
 
             int count = commentService.getCommentCount(comment.getEntityId(), comment.getEntityType());
             questionService.updateCommentCount(comment.getEntityId(), count);
+
+            eventProducer.fireEvent(new EventModel(EventType.COMMENT).setActorId(comment.getUserId())
+                    .setEntityId(questionId));
         }catch (Exception e){
             logger.error("增加评论失败 "+e.getMessage());
         }

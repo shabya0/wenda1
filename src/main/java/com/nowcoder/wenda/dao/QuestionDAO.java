@@ -33,6 +33,6 @@ public interface QuestionDAO {
         @Delete({"delete from ",table_name," where id=#{id}"})          //根据id删除问题
         void deleteQuestionById(int id);
         //动态sql
-        @SelectProvider(type = QuestionSQLProvider.class, method = "selectQuestionwhere")
+        @SelectProvider(type = SQLProvider.class, method = "selectQuestionwhere")
         List<Question> selectLatestQuestions(int userId, int offset, int limit);
 }

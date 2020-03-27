@@ -40,7 +40,7 @@ public interface MessageDAO {
 // order by created_date desc           每组数据最新一条消息
 //    @Select({"select ", insert_fields, "  from message a inner join(select max(created_date) 'lasted' from ", table_name,
 //            " where from_id=#{userId} or to_id=#{userId} group by conversation_id order by created_date desc) tt where a.created_date=tt.lasted limit #{offset},#{limit}"})
-@Select({"select ", insert_fields, " , count(id) as id from ( select * from ", table_name,
+    @Select({"select ", insert_fields, " , count(id) as id from ( select * from ", table_name,
         " where from_id=#{userId} or to_id=#{userId} order by created_date desc) tt group by conversation_id order by created_date desc limit #{offset}, #{limit}"})
     List<Message> getConversationList(@Param("userId") int userId,
                                         @Param("offset") int offset,
