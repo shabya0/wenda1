@@ -5,6 +5,7 @@ import com.nowcoder.wenda.async.EventHandler;
 import com.nowcoder.wenda.async.EventModel;
 import com.nowcoder.wenda.async.EventType;
 import com.nowcoder.wenda.controller.FeedController;
+import com.nowcoder.wenda.dao.FeedDAO;
 import com.nowcoder.wenda.model.*;
 import com.nowcoder.wenda.service.*;
 import com.nowcoder.wenda.util.JedisAdapter;
@@ -15,6 +16,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Component
@@ -31,11 +34,14 @@ public class FeedHandler implements EventHandler {
     FollowService followService;
     @Autowired
     JedisAdapter jedisAdapter;
+    @Autowired
+    HostHolder hostHolder;
     private static final Logger logger = LoggerFactory.getLogger(FeedController.class);
 
     //model序列化
     private String buildFeedData(EventModel model){
         Map<String, String> map = new HashMap<String, String>();
+        logger.info("feedHandler44 getActorId: "+model.getActorId());
         User actor = userService.getUser(model.getActorId());
         if(actor == null){
             return null;
@@ -57,13 +63,12 @@ public class FeedHandler implements EventHandler {
     }
 
     @Override
-    public void doHandle(EventModel model) {
-        // 为了测试，把model的userId随机一下
-        Random r = new Random();
-        model.setActorId(1+r.nextInt(10));
+    public void doHandle(EventModel model) throws ParseException {
 
         Feed feed = new Feed();
-        feed.setCreatedDate(new Date());
+
+        Date now = new Date();
+        feed.setCreatedDate(now);
         feed.setUserId(model.getActorId());
         feed.setType(model.getType().getValue());
         feed.setData(buildFeedData(model));
@@ -71,8 +76,9 @@ public class FeedHandler implements EventHandler {
             return ;
         }
 
-        feedService.addFeed(feed);
-
+        int feed_id = feedService.addFeed(feed);    //返回插入数据自增列的值
+        logger.info("addFeed: return id: "+feed_id);
+        logger.info("model.getActorId: "+model.getActorId());
         List<Integer> followers = followService.getFollowers(EntityType.ENTITY_USER, model.getActorId(), Integer.MAX_VALUE);
         // 系统队列
         followers.add(0);
@@ -80,8 +86,8 @@ public class FeedHandler implements EventHandler {
         for (int follower : followers) {
             logger.info("feedHandler follower: "+ follower);
             String timelineKey = RedisKeyUtil.getTimelineKey(follower);
-            logger.info("fgetTimelineKey(follower): "+timelineKey+"   getId: "+String.valueOf(feed.getId()) );
-            jedisAdapter.lpush(timelineKey, String.valueOf(feed.getId()));
+            logger.info("feedTimelineKey(follower): "+timelineKey+"   getId: "+String.valueOf( feed_id ));
+            jedisAdapter.lpush(timelineKey, String.valueOf( feed_id ));
             // 限制最长长度，如果timelineKey的长度过大，就删除后面的新鲜事
         }
     }
@@ -92,4 +98,18 @@ public class FeedHandler implements EventHandler {
         return Arrays.asList(new EventType[]{EventType.COMMENT, EventType.FOLLOW});
     }
 
+    public static void main(String args[]) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar date = Calendar.getInstance();
+        Date d = new Date();
+        date.setTime(d);
+//        String time = format.format(date);
+//        System.out.println(time);
+        System.out.println(date.getTime());
+//        System.out.println(time);
+//        FeedService feedService = new FeedService();
+//        java.sql.Date now = format.parse("2020-03-28 01:05:37");
+//        Feed f = feedService.getFeedByCrDate(now);
+//        System.out.println(f.toString());
+    }
 }

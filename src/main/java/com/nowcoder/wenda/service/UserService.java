@@ -1,11 +1,14 @@
 package com.nowcoder.wenda.service;
 
+import com.nowcoder.wenda.controller.FeedController;
 import com.nowcoder.wenda.dao.LoginTicketDAO;
 import com.nowcoder.wenda.dao.UserDAO;
 import com.nowcoder.wenda.model.LoginTicket;
 import com.nowcoder.wenda.model.User;
 import com.nowcoder.wenda.util.WendaUtil;
 import org.codehaus.plexus.util.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +21,11 @@ public class UserService {
 
     @Autowired
     private LoginTicketDAO loginTicketDAO;
+
+    private static final Logger logger = LoggerFactory.getLogger(FeedController.class);
+
     public User getUser(int id){
+        logger.info("getUser:"+id);
         return userDAO.getUserById(id);
     }
     public User selectUserByName(String name){ return userDAO.selectUserByName(name); }

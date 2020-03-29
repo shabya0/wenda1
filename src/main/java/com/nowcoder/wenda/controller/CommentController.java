@@ -53,6 +53,7 @@ public class CommentController {
             int count = commentService.getCommentCount(comment.getEntityId(), comment.getEntityType());
             questionService.updateCommentCount(comment.getEntityId(), count);
 
+            logger.info("commentContro getUserId:"+comment.getUserId());
             eventProducer.fireEvent(new EventModel(EventType.COMMENT).setActorId(comment.getUserId())
                     .setEntityId(questionId));
         }catch (Exception e){

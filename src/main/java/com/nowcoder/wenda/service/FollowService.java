@@ -22,7 +22,7 @@ public class FollowService {
     //关注
     public boolean follow(int userId, int entityType, int entityId){
         String followerKey = RedisKeyUtil.getFollowerKey(entityType, entityId);     //用户关注的列表
-        String followeeKey = RedisKeyUtil.getFolloweeKey(userId, entityType);       //对象的被关注列表
+        String followeeKey = RedisKeyUtil.getFolloweeKey(entityType, userId);       //对象的被关注列表
 
         Date date = new Date();
         Jedis jedis = jedisAdapter.getJedis();
@@ -38,7 +38,7 @@ public class FollowService {
     //取消关注
     public boolean unfollow(int userId, int entityType, int entityId){
         String followerKey = RedisKeyUtil.getFollowerKey(entityType, entityId);     //用户关注的列表
-        String followeeKey = RedisKeyUtil.getFolloweeKey(userId, entityType);       //对象的被关注列表
+        String followeeKey = RedisKeyUtil.getFolloweeKey(entityType, userId);       //对象的被关注列表
 
         Date date = new Date();
         Jedis jedis = jedisAdapter.getJedis();

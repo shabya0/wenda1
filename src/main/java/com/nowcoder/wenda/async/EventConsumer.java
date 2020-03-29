@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,7 +58,11 @@ public class EventConsumer implements InitializingBean, ApplicationContextAware 
                             continue;
                         }
                         for(EventHandler handler: config.get(eventModel.getType())){
-                            handler.doHandle(eventModel);       //处理事件
+                            try {
+                                handler.doHandle(eventModel);       //处理事件
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }
