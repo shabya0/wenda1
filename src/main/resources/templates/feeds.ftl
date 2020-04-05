@@ -7,7 +7,7 @@
     <div class="feed-item-inner">
         <div class="avatar">
             <#--{"userHead":"http://images.nowcoder.com/head/154t.png","questionId":"18","questionTitle":"你好***","userId":"33","username":"rr"}-->
-            <a title="${vo.username}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="/user/${vo.userId}">
+            <a title="${vo.username}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="/user/${vo.userId?c}">
                 <img src="${vo.userHead}" class="zm-item-img-avatar"></a>
         </div>
         <div class="feed-main">
@@ -27,7 +27,7 @@
                         <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;" data-bind-votecount="">$ {vo.followCount}</a></div>
                         -->
                     <div class="zm-item-answer-author-info">
-                        <a class="author-link" data-tip="p$b$amuro1230" target="_blank" href="/user/${vo.userId}">${vo.username}</a>
+                        <a class="author-link" data-tip="p$b$amuro1230" target="_blank" href="/user/${vo.userId?c}">${vo.username}</a>
                         评论了该问题 ， ${vo.createdDate?string("yyyy-MM-dd HH:mm:ss")}</div>
                     <!--
                     <div class="zm-item-vote-info" data-votecount="4168" data-za-module="VoteInfo">
@@ -69,7 +69,7 @@
     <meta itemprop="ZReactor" data-id="389034" data-meta="{&quot;source_type&quot;: &quot;promotion_answer&quot;, &quot;voteups&quot;: 4168, &quot;comments&quot;: 69, &quot;source&quot;: []}">
     <div class="feed-item-inner">
         <div class="avatar">
-            <a title="${vo.username}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="/user/${vo.userId}">
+            <a title="${vo.username}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="/user/${vo.userId?c}">
                 <img src="${vo.userHead}" class="zm-item-img-avatar"></a>
         </div>
         <div class="feed-main">
@@ -78,7 +78,7 @@
                 <meta itemprop="answer-url-token" content="13174385">
                 <!--
                 <h2 class="feed-title">
-                    <a class="question_link" target="_blank" href="/question/$ {vo.questionId}">$ {vo.questionTitle}</a></h2>
+                    <a class="question_link" target="_blank" href="/question/$ {vo.questionId?c}">$ {vo.questionTitle}</a></h2>
                 <div class="feed-question-detail-item">
                     <div class="question-description-plain zm-editable-content"></div>
                 </div>
@@ -89,7 +89,7 @@
                         <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;" data-bind-votecount="">$ {vo.followCount}</a></div>
                         -->
                     <div class="zm-item-answer-author-info">
-                        <a class="author-link" data-tip="p$b$amuro1230" target="_blank" href="/user/${vo.userId}">${vo.username}</a>
+                        <a class="author-link" data-tip="p$b$amuro1230" target="_blank" href="/user/${vo.userId?c}">${vo.username}</a>
                         关注了该问题 ，${vo.createdDate?string("yyyy-MM-dd HH:mm:ss")}</div>
                     <!--
                     <div class="zm-item-vote-info" data-votecount="4168" data-za-module="VoteInfo">
@@ -109,7 +109,7 @@
                             <a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-123114">
                                 <i class="z-icon-follow"></i>关注问题</a>
                             <a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
-                                <i class="z-icon-comment"></i>$ {vo.question.commentCount} 条评论</a>
+                                <i class="z-icon-comment"></i>$ {vo.question.commentCount?c} 条评论</a>
 
 
                             <button class="meta-item item-collapse js-collapse">

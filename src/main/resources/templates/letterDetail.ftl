@@ -8,7 +8,7 @@
         <ul class="letter-chatlist">
              <#list messages as message>
             <li id="msg-item-4009580">
-                <#if user.id != message.user.id>
+                <#if user.id?c != message.user.id?c>
                 <#--对方消息，放左边-->
                     <a class="list-head">
                         <img alt="头像" src="${message.user.headUrl}">

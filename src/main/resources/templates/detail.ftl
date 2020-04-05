@@ -32,12 +32,12 @@
             <div class="zm-side-section">
                 <div class="zm-side-section-inner" id="zh-question-side-header-wrap">
                     <#if followed>
-                        <button class="follow-button zg-follow zg-btn-white js-follow-question" data-id="${question.id}"
+                        <button class="follow-button zg-follow zg-btn-white js-follow-question" data-id="${question.id?c}"
                                 data-status="1">
                             取消关注
                         </button>
                     <#else>
-                        <button class="follow-button zg-follow zg-btn-green js-follow-question" data-id="${question.id}">
+                        <button class="follow-button zg-follow zg-btn-green js-follow-question" data-id="${question.id?c}">
                             关注问题
                         </button>
                     </#if>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="list zu-small-avatar-list zg-clear js-user-list">
                             <#list followUsers as vo>
-                            <a class="zm-item-link-avatar js-user-${vo.id}" href="/user/${vo.id}"
+                            <a class="zm-item-link-avatar js-user-${vo.id?c}" href="/user/${vo.id?c}"
                                data-original_title="${vo.name}">
                                 <img src="${vo.headUrl}" class="zm-item-img-avatar"></a>
                             </#list>
@@ -133,7 +133,7 @@
             <a name="draft"></a>
 
             <form action="/addComment" method="post">
-                <input type="hidden" name="questionId" value="${question.id}"/>
+                <input type="hidden" name="questionId" value="${question.id?c}"/>
             <div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
                 <div class="zm-editable-editor-wrap" style="">
                     <div class="zm-editable-editor-outer">

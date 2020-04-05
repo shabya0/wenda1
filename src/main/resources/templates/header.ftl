@@ -40,11 +40,14 @@
                 </#if>
 
         </div>
-        <button class="zu-top-add-question" id="zu-top-add-question" >提问</button>
+        <#if (user??)>
+            <button class="zu-top-add-question" id="zu-top-add-question" >提问</button>
+        </#if>
         <div role="search" id="zh-top-search" class="zu-top-search">
-            <form method="GET" action="https://nowcoder.com/search" id="zh-top-search-form" class="zu-top-search-form">
+            <form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form">
                 <input type="hidden" name="type" value="content">
-                <label for="q" class="hide-text">搜索</label><input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索你感兴趣的内容..." role="combobox" aria-autocomplete="list">
+                <label for="q" class="hide-text">搜索</label><input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="${kryword!}"
+                                                                  placeholder="搜索你感兴趣的内容..." role="combobox" aria-autocomplete="list"><!--  value  $ {keyword}-->
                 <button type="submit" class="zu-top-search-button"><span class="hide-text">搜索</span><span class="sprite-global-icon-magnifier-dark"></span></button>
             </form>
         </div>
@@ -54,11 +57,15 @@
                     <a class="zu-top-nav-link" href="/" id="zh-top-link-home" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_home">首页</a>
                 </li>
                 <li class="zu-top-nav-li " id="zh-top-nav-explore">
-                    <a class="zu-top-nav-link" href="https://nowcoder.com/explore">发现</a>
+                    <a class="zu-top-nav-link" href="/pusllfeeds">发现</a>
                 </li>
+            <#if (user??)>
                 <li class="top-nav-noti zu-top-nav-li ">
-                    <a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息<span id="zh-top-nav-count" class="zu-top-nav-count zg-noti-number" style="display: none;">0</span></a>
+                    <a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button">
+                        <span class="mobi-arrow"></span>消息<span id="zh-top-nav-count"
+                                                                class="zu-top-nav-count zg-noti-number" style="display: none;">0</span></a>
                 </li>
+            </#if>
             </ul>
             <div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
                 <div class="zu-top-nav-live-inner zg-r5px">

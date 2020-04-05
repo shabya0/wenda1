@@ -22,7 +22,7 @@
                                     js-follow-user" data-id="${profileUser.user.id}">关注</button>
                                     </#if>
                                 </div>
-                                <a title="Barty" class="zm-item-link-avatar" href="/user/${profileUser.user.id}">
+                                <a title="Barty" class="zm-item-link-avatar" href="/user/${profileUser.user.id?c}">
                                     <img src="${profileUser.user.headUrl}" class="zm-item-img-avatar">
                                 </a>
                                 <div class="zm-list-content-medium">
@@ -70,7 +70,7 @@
                                         <meta itemprop="answer-id" content="389034">
                                         <meta itemprop="answer-url-token" content="13174385">
                                         <h2 class="feed-title">
-                                            <a class="question_link" target="_blank" href="/question/${vo.question.id}">${vo.question.title}</a></h2>
+                                            <a class="question_link" target="_blank" href="/question/${vo.question.id?c}">${vo.question.title}</a></h2>
                                         <div class="feed-question-detail-item">
                                             <div class="question-description-plain zm-editable-content"></div>
                                         </div>
@@ -78,7 +78,7 @@
                                             <div class="zm-item-vote">
                                                 <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;" data-bind-votecount="">${vo.followCount}</a></div>
                                             <div class="zm-item-answer-author-info">
-                                                <a class="author-link" data-tip="p$b$amuro1230" target="_blank" href="/user/${vo.user.id}">${vo.user.name}</a>
+                                                <a class="author-link" data-tip="p$b$amuro1230" target="_blank" href="/user/${vo.user.id?c}">${vo.user.name}</a>
                                                 ${vo.question.createdDate?string("yyyy-MM-dd HH:mm:ss")}</div>
                                             <div class="zm-item-vote-info" data-votecount="4168" data-za-module="VoteInfo">
                                                 <span class="voters text">
@@ -95,7 +95,7 @@
                                                     <a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-123114">
                                                         <i class="z-icon-follow"></i>关注问题</a>
                                                     <a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
-                                                        <i class="z-icon-comment"></i>${vo.question.commentCount} 条评论</a>
+                                                        <i class="z-icon-comment"></i>${vo.question.commentCount?c} 条评论</a>
 
 
                                                     <button class="meta-item item-collapse js-collapse">

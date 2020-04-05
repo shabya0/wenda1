@@ -18,16 +18,16 @@
                                     <#if vo.followed??>
                                         <div class="zg-right">
                                             <button class="zg-btn zg-btn-unfollow zm-rich-follow-btn small nth-0
-                                            js-follow-user" data-status="1" data-id="${vo.user.id}">取消关注</button>
+                                            js-follow-user" data-status="1" data-id="${vo.user.id?c}">取消关注</button>
                                         </div>
                                     <#else>
                                         <div class="zg-right">
                                             <button class="zg-btn zg-btn-follow zm-rich-follow-btn small nth-0
-                                            js-follow-user" data-id="${vo.user.id}">关注</button>
+                                            js-follow-user" data-id="${vo.user.id?c}">关注</button>
                                         </div>
                                     </#if>
 
-                                    <a title="Barty" class="zm-item-link-avatar" href="/user/${vo.user.id}">
+                                    <a title="Barty" class="zm-item-link-avatar" href="/user/${vo.user.id?c}">
                                         <img src="${vo.user.headUrl}" class="zm-item-img-avatar">
                                     </a>
                                     <div class="zm-list-content-medium">
@@ -35,9 +35,9 @@
 
                                         <!-- <div class="zg-big-gray">计蒜客教研首席打杂</div> -->
                                         <div class="details zg-gray">
-                                            <a target="_blank" href="/user/${vo.user.id}/followers" class="zg-link-gray-normal">${vo.followerCount}粉丝</a>
+                                            <a target="_blank" href="/user/${vo.user.id?c}/followers" class="zg-link-gray-normal">${vo.followerCount}粉丝</a>
                                             /
-                                            <a target="_blank" href="/user/${vo.user.id}/followees" class="zg-link-gray-normal">${vo.followeeCount}关注</a>
+                                            <a target="_blank" href="/user/${vo.user.id?c}/followees" class="zg-link-gray-normal">${vo.followeeCount}关注</a>
                                             /
                                             <a target="_blank" href="#" class="zg-link-gray-normal">${vo.commentCount} 回答</a>
                                             /

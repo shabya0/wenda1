@@ -25,7 +25,7 @@
                             <div class="feed-item-inner">
                                 <div class="avatar">
                                     <#--!!!!!!${vo.question.title}   测试用语句-->
-                                    <a title="${vo.user.name}" data-tip="p$t$zhao-yong-feng" class="zm-item-link-avatar" target="_blank" href="/user/${vo.user.id}">
+                                    <a title="${vo.user.name}" data-tip="p$t$zhao-yong-feng" class="zm-item-link-avatar" target="_blank" href="/user/${vo.user.id?c}">
                                         <img src="${vo.user.headUrl}" class="zm-item-img-avatar"></a>   <#--头像-->
                                 </div>
                                 <div class="feed-main">
@@ -33,7 +33,7 @@
                                         <meta itemprop="post-id" content="113477">
                                         <meta itemprop="post-url-token" content="19831487">
                                         <h2 class="feed-title">
-                                            <a rel="noopener noreferrer" target="_blank" class="post-link" href="localhost:8080/question/${vo.question.id}">${vo.question.title}</a></h2>     <!--问题标题-->
+                                            <a rel="noopener noreferrer" target="_blank" class="post-link" href="localhost:8080/question/${vo.question.id?c}">${vo.question.title}</a></h2>     <!--问题标题-->
                                         <div class="entry-body post-body js-collapse-body">
                                             <div class="zm-item-vote">
                                                 <a class="zm-item-vote-count js-expand js-vote-count" href="#" data-bind-votecount="">1082</a></div>
@@ -44,7 +44,7 @@
                                                     <span class="label sr-only">赞同</span></button>
                                             </div>
                                             <div class="author-info">
-                                                <a href="/user/${vo.user.id}" data-tip="p$t$zhao-yong-feng" class="name">${vo.user.name}</a> ,  发布于${vo.question.createdDate?string("yyyy-MM-dd HH:mm:ss")}</div>       <#--用户名字  salt-->
+                                                <a href="/user/${vo.user.id?c}" data-tip="p$t$zhao-yong-feng" class="name">${vo.user.name}</a> ,  发布于${vo.question.createdDate?string("yyyy-MM-dd HH:mm:ss")}</div>       <#--用户名字  salt-->
                                             <div class="zm-item-vote-info" data-votecount="1082" data-za-module="VoteInfo">
                                                 <span class="voters text">
                                                     <a href="#" class="more text">
