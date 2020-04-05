@@ -7864,7 +7864,7 @@ a>.invisible {
     float:left;
     width:61px;
     height:100%;
-    background-image:url(../images/res/nk.png);
+    background-image:url(../images/res/gg.png);
     background-repeat:no-repeat;
     background-position:center;
     text-indent:-9999px;
@@ -8006,7 +8006,27 @@ a>.invisible {
     position: absolute;
     left: 0
 }
+.top-nav-profile ul:hover ul{
+    display:block;
+    margin: 0;
+    position: absolute;
+    left: 0;
+}
+.top-nav-dropdown:hover{
+    display: block;
+    margin: 0;
+    position: absolute;
+    left: 0;
+}
 
+.top-nav-dropdown li {
+    margin: 0;
+    list-style: none
+}
+.top-nav-dropdown li:hover a{
+    color:#25bb9b;
+}
+/*debug*/
 body div div div ul ul{
     display: block;
     margin: 0;
@@ -8233,9 +8253,7 @@ html.no-touchevents .zu-top-nav-userinfo:hover {
     margin:0;
     list-style:none
 }
-.zu-top-nav-li.current {
-    background:#31363d;
-}
+
 .zu-top-nav-link,.zu-top-nav-link:visited,.zu-top-nav-link:active {
     color:#eee
 }

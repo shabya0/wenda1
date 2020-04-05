@@ -30,11 +30,6 @@
                     </span>
                     </a>
                 </li>
-                <#--<li>-->
-                    <#--<a href="https://nowcoder.com/settings" tabindex="-1" id=":3">-->
-                        <#--<i class="zg-icon zg-icon-dd-settings"></i>设置-->
-                    <#--</a>-->
-                <#--</li>-->
                 <li class="logout">
                     <a href="/logout" tabindex="-1" id=":4">
                         <i class="zg-icon zg-icon-dd-logout"></i>退出
