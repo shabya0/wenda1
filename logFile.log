@@ -1,5 +1,5 @@
 04:27:08 [http-nio-8080-exec-4] DEBUG o.s.w.servlet.DispatcherServlet - GET "/setting", parameters={}
-04:27:08 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to public java.lang.String com.nowcoder.wenda.controller.SettingController.setting(javax.servlet.http.HttpSession)
+04:27:08 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to public java.lang.String SettingController.setting(javax.servlet.http.HttpSession)
 04:27:08 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'text/html', given [text/html, application/xhtml+xml, image/webp, image/apng, application/signed-exchange;v=b3, application/xml;q=0.9, */*;q=0.8] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
 04:27:08 [http-nio-8080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing ["Setting OK. Hello Message: 2"]
 04:27:08 [http-nio-8080-exec-4] DEBUG o.s.w.servlet.DispatcherServlet - Completed 200 OK
@@ -7,7 +7,7 @@
 04:27:08 [http-nio-8080-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [class path resource [META-INF/resources/], class path resource [resources/], class path resource [static/], class path resource [public/], ServletContext resource [/], class path resource []]
 04:27:08 [http-nio-8080-exec-5] DEBUG o.s.w.servlet.DispatcherServlet - Completed 200 OK
 04:27:17 [http-nio-8080-exec-6] DEBUG o.s.w.servlet.DispatcherServlet - GET "/setting", parameters={}
-04:27:17 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to public java.lang.String com.nowcoder.wenda.controller.SettingController.setting(javax.servlet.http.HttpSession)
+04:27:17 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to public java.lang.String SettingController.setting(javax.servlet.http.HttpSession)
 04:27:17 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'text/html', given [text/html, application/xhtml+xml, image/webp, image/apng, application/signed-exchange;v=b3, application/xml;q=0.9, */*;q=0.8] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
 04:27:17 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing ["Setting OK. Hello Message: 2"]
 04:27:17 [http-nio-8080-exec-6] DEBUG o.s.w.servlet.DispatcherServlet - Completed 200 OK

@@ -117,11 +117,11 @@
 
 #reg-login {
     color: #FFFFFF;
-    font-size: 18px;
-    padding-top:  8px;
+    font-size: 15px;
+    padding-top:  10px;
 }
 #reg-login:hover {
-    color: #25bb9b;
+    color: #000000;
 }
 
 .fadeOutDown {
@@ -284,10 +284,10 @@ html.in-app body.zhi {
 }
 
 a {
-    color: #33a554
+    color: #337ba5
 }
 a:hover {
-    color: #25bb9b;
+    color: #412c96;
 }
 a:active {
     outline: 0
@@ -2030,17 +2030,17 @@ html.no-touchevents .meta-item:hover .z-icon-comment {
 .zg-btn-white {
     color: #fff!important;
     /*text-shadow: 0 1px 0 #fff;*/
-    background: #25bb9b;
+    background: #3968c1;
 /*    background: -webkit-linear-gradient(top,#25bb9b,#00B091);
     background: linear-gradient(to bottom,#25bb9b,#00B091);*/
     /*border: 1px solid #bbb;*/
     box-shadow: 0 1px 0 #fff inset,0 1px 0 rgba(0,0,0,.1)
 }
 .zg-btn-white:hover {
-    background: #00B091;
+    background: #312379;
 }
 .zg-btn-white:active {
-    background: #ddd;
+    background: linear-gradient(to bottom,#8987bd,#8daba5);
     box-shadow: none
 }
 
@@ -9703,7 +9703,7 @@ a>.invisible {
     z-index: 20;
     width: 100%;
     height: 45px;
-    background: #3d444c;
+    background: #658ebd;
     /*background: -webkit-linear-gradient(top,#086ed5,#055db5);
     background: linear-gradient(to bottom,#086ed5,#055db5);
     border-bottom: 1px solid #044e97;
@@ -9783,7 +9783,7 @@ a>.invisible {
     height: 100%;
     background: #00BC9B;
     background: -webkit-linear-gradient(top,#00BC9B,#00BC9B);
-    background: linear-gradient(to bottom,#00BC9B,#00BC9B);
+    background: linear-gradient(to bottom,#3968c1,#5c6eef);
     border: 1px solid #3d444c;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
@@ -9846,7 +9846,7 @@ a>.invisible {
     margin-top: 7px;
     border: 1px solid #00B091;
     border-radius: 4px;
-    background: #00BC9B;
+    background: #3968c1;
     /*background: -webkit-linear-gradient(top,#0e7bef,#0d73da);
     background: linear-gradient(to bottom,#0e7bef,#0d73da);*/
     box-shadow: 0 1px 2px rgba(0,0,0,.05),inset 0 1px 1px rgba(255,255,255,.15);
@@ -9918,7 +9918,7 @@ a>.invisible {
     list-style: none
 }
 .top-nav-dropdown li:hover a{
-    color:#25bb9b;
+    color:#040404;
 }
 
 .top-nav-dropdown li a {
@@ -9926,7 +9926,7 @@ a>.invisible {
     width: 145px;
     height: 40px;
     line-height: 40px;
-    color: #888;
+    color: #ffffff;
     text-decoration: none;
     box-shadow: 0 1px 1px rgba(0,0,0,.4);
     white-space: nowrap;
@@ -10060,9 +10060,10 @@ html.no-touchevents .mobile-top-nav-popup .top-nav-dropdown a:hover {
 .top-nav-profile a {
     display: block;
     width: 120px;
-    background-color: #31363D;
+    background-color: #658ebd;
     text-shadow: 0 1px 1px rgba(0,0,0,.12);
-    font-size: 14px
+    font-size: 14px;
+    padding-top:10px;
 }
 
 
@@ -10082,9 +10083,9 @@ html.no-touchevents .mobile-top-nav-popup .top-nav-dropdown a:hover {
 .top-nav-profile .zu-top-nav-userinfo {
     position: relative;
     height: 45px;
-    line-height: 45px;
+    line-height: 25px;
     text-indent: 46px;
-    color: #888;
+    color: #fffdfd;
     text-decoration: none;
     border-top: 0;
     background: transparent;
@@ -10117,7 +10118,7 @@ html.no-touchevents .zu-top-nav-userinfo:hover {
 }
 
 .top-nav-dropdown .zg-icon {
-    width: 20px;
+    width: 16px;
     height: 20px;
     margin: 0 11px 0 15px;
     vertical-align: -7px
@@ -10171,15 +10172,14 @@ html.no-touchevents .zu-top-nav-userinfo:hover {
     background: -webkit-linear-gradient(top,#055fb8,#095fb3);
     background: linear-gradient(to bottom,#055fb8,#095fb3);
     box-shadow: inset 0 0 2px rgba(0,0,0,.12)*/
-    background: #3d444c;
 }
 
 .zu-top-nav-link,.zu-top-nav-link:visited,.zu-top-nav-link:active {
-    color: #eee
+    color: #fff
 }
 
 .zu-top-nav-link:hover {
-    color: #fff;
+    color: #000;
     text-decoration: none
 }
 
@@ -10189,7 +10189,7 @@ html.no-touchevents .zu-top-nav-userinfo:hover {
     line-height: 45px;
     text-align: center;
     display: block;
-    color: #888;
+    color: #fff;
     text-shadow: 0 1px 1px rgba(0,0,0,.12);
     font-size: 14px
 }

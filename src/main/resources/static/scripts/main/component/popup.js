@@ -119,11 +119,36 @@ var oPopup = new Popup({
         Popup.superClass.initialize.apply(that, arguments);
     }
 
+    //获取滚动条位置
+    function GetPageScroll()
+    {
+        var x, y; if(window.pageYOffset)
+    {    // all except IE
+        y = window.pageYOffset;
+        x = window.pageXOffset;
+    } else if(document.documentElement && document.documentElement.scrollTop)
+    {    // IE 6 Strict
+        y = document.documentElement.scrollTop;
+        x = document.documentElement.scrollLeft;
+    } else if(document.body) {    // all other IE
+        y = document.body.scrollTop;
+        x = document.body.scrollLeft;
+    }
+        return {X:x, Y:y};
+    }
     function fInitMask() {
+        var clientHeight = 0;
+        if (document.body.clientHeight && document.documentElement.clientHeight) {
+            clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight);
+        } else {
+            clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight);
+        }
+
         var that = this;
         var oConf = that.rawConfig;
         if (!that.maskEl) {
             that.maskEl = $('<div class="masklayer" style="position:absolute;z-index:' + (Popup.zIndex++) + '"></div>');
+            //document.getElementById('navigation').offsetTop+document.body.scrollTop
             oConf.renderTo.append(that.maskEl);
         }
     }
@@ -141,7 +166,8 @@ var oPopup = new Popup({
         // 调整元素大小
         oEl.css({
             left: nWinWidth > nElWidth ? (nWinWidth - nElWidth) / 2 : 0,
-            top: (nWinHeight > nElHeight ? (nWinHeight - nElHeight) / 2 : 0) + nScrollTop
+            top: GetPageScroll().Y+140
+            // top: (nWinHeight > nElHeight ? (nWinHeight - nElHeight) / 2 : 0) //+ nScrollTop
         });
         // 调整遮罩层大小
         that.maskEl.css({

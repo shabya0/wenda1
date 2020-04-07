@@ -219,7 +219,7 @@ html.in-app body.zhi {
     padding-top:0
 }
 a {
-    color:#25bb9b
+    color:#00649e
 }
 a:active {
     outline:0
@@ -7924,8 +7924,8 @@ a>.invisible {
     z-index:20;
     width:100%;
     height:45px;
-    background:#3d444c;
-    border-bottom:1px solid #044e97;
+    background:#658ebd;
+    border-bottom:1px solid #e4ebf3;
     box-shadow:0 1px 2px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.15)
 }
 .zu-top .zg-wrap {
@@ -7946,7 +7946,7 @@ a>.invisible {
     float:left;
     width:61px;
     height:100%;
-    background-image:url(../images/res/nk.png);
+    background-image:url(../images/res/gg.png);
     background-repeat:no-repeat;
     background-position:center;
     text-indent:-9999px;
@@ -7985,7 +7985,7 @@ a>.invisible {
     right:0;
     width:40px;
     height:100%;
-    background:#21a88b;
+    background:linear-gradient(to bottom,#3968c1,#5c6eef);
     /*background:-webkit-linear-gradient(top,#0e7bef,#0d73da);
     background:linear-gradient(to bottom,#0e7bef,#0d73da);*/
     border:1px solid #3d444c;
@@ -8041,7 +8041,7 @@ a>.invisible {
     margin-top:7px;
     border:1px solid #21a88b;
     border-radius:4px;
-    background:#21a88b;
+    background:#3968c1;
     box-shadow:0 1px 2px rgba(0,0,0,.05),inset 0 1px 1px rgba(255,255,255,.15);
     color:#fff;
     font-size:14px;
@@ -8086,7 +8086,7 @@ a>.invisible {
     width:145px;
     height:40px;
     line-height:40px;
-    color:#888;
+    color:#fff;
     text-decoration:none;
     box-shadow:0 1px 1px rgba(0,0,0,.4);
     white-space:nowrap;
@@ -8095,7 +8095,7 @@ a>.invisible {
     cursor:pointer
 }
 .top-nav-dropdown li a:hover {
-    color: #fff;
+    color: #000;
 }
 html.no-touchevents .top-nav-dropdown a:hover {
     background-color:#31363D
@@ -8206,9 +8206,10 @@ html.no-touchevents .mobile-top-nav-popup .top-nav-dropdown a:hover {
 .top-nav-profile a {
     display:block;
     width:120px;
-    background-color:#31363d;
+    background-color:#658ebd;
     text-shadow:0 1px 1px rgba(0,0,0,.12);
-    font-size:14px
+    font-size:14px;
+    padding-top:10px;
 }
 .top-nav-profile .top-nav-dropdown {
     top:46px
@@ -8222,7 +8223,7 @@ html.no-touchevents .mobile-top-nav-popup .top-nav-dropdown a:hover {
 .top-nav-profile .zu-top-nav-userinfo {
     position:relative;
     height:45px;
-    line-height:45px;
+    line-height:25px;
     text-indent:46px;
     color:#fff;
     text-decoration:none;
@@ -8250,7 +8251,7 @@ html.no-touchevents .zu-top-nav-userinfo:hover {
     background-color:transparent
 }
 .top-nav-dropdown .zg-icon {
-    width:20px;
+    width:16px;
     height:20px;
     margin:0 11px 0 15px;
     vertical-align:-7px
@@ -8290,14 +8291,12 @@ html.no-touchevents .zu-top-nav-userinfo:hover {
     margin:0;
     list-style:none
 }
-.zu-top-nav-li.current {
-    background:#31363d;
-}
+
 .zu-top-nav-link,.zu-top-nav-link:visited,.zu-top-nav-link:active {
     color:#eee
 }
 .zu-top-nav-link:hover {
-    color:#fff;
+    color:#000;
     text-decoration:none
 }
 .zu-top-nav-link {
@@ -13784,4 +13783,32 @@ html.no-touchevents .carousel:hover .carousel-navigation-btn {
     font-size: 14px;
     font-weight: 700;
     color: #666;
+}
+
+
+
+
+
+/*debug*/
+.zu-main-content-inner ul li{
+    list-stytle:none;
+    border-bottom: 0.1px ridge #eae6e6;
+}
+ul li{
+    list-style-type: none;
+}
+.title{
+    font-size:15px;
+    padding-top: 10px;
+}
+.summary {
+    padding-top: 5px;
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+body div div div ul ul {
+    display: block;
+    margin: 0;
+    position: unset;
+    left: 0;
 }

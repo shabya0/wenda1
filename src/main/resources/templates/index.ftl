@@ -9,9 +9,9 @@
                 <div class="zg-section" id="zh-home-list-title">
                     <i class="zg-icon zg-icon-feedlist"></i>最新动态
                     <input type="hidden" id="is-topstory">
-                    <span class="zg-right zm-noti-cleaner-setting" style="list-style:none">
-                        <a href="https://nowcoder.com/settings/filter" class="zg-link-gray-normal">
-                            <i class="zg-icon zg-icon-settings"></i>设置</a></span>
+                    <#--<span class="zg-right zm-noti-cleaner-setting" style="list-style:none">-->
+                        <#--<a href="https://nowcoder.com/settings/filter" class="zg-link-gray-normal">-->
+                            <#--<i class="zg-icon zg-icon-settings"></i>设置</a></span>-->
                 </div>
                 <div class="zu-main-feed-con navigable" data-feedtype="topstory" id="zh-question-list" data-widget="navigable" data-navigable-options="{&quot;items&quot;:&quot;&gt; .zh-general-list .feed-content&quot;,&quot;offsetTop&quot;:-82}">
                     <a href="javascript:;" class="zu-main-feed-fresh-button" id="zh-main-feed-fresh-button" style="display:none"></a>
@@ -99,5 +99,5 @@
             </div>
         </div>
     <#include "js.ftl"/>
-    </div><script type="text/javascript" src="/scripts/main/site/detail.js"></script>
+    <#--</div><script type="text/javascript" src="/scripts/main/site/detail.js"></script>-->
 <#include "footer.ftl"/>

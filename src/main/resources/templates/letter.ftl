@@ -47,6 +47,6 @@
 
         </div>
     </div>
-<#--<#include "js.html">-->
+<#include "js.ftl">
 <script type="text/javascript" src="/scripts/main/site/detail.js"></script>
 <#include "footer.ftl">

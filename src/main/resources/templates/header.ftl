@@ -1,3 +1,4 @@
+<title>${title}</title>
 <div role="navigation" class="zu-top">
     <div class="zg-wrap modal-shifting clearfix" id="zh-top-inner">
         <a href="http://localhost:8080/" class="zu-top-link-logo" id="zh-top-link-logo" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_zhihu_logo">首页</a>
@@ -25,8 +26,7 @@
                 </li>
                 <li class="letter">
                     <a href="/msg/list" tabindex="-1" id=":2">
-                        <i class="zg-icon zg-icon-dd-pm"></i>私信
-                        <span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number" style="visibility:hidden" data-count="0">
+                        <i class="zg-icon zg-icon-dd-pm"></i>聊天记录<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number" style="visibility:hidden" data-count="0">
                     </span>
                     </a>
                 </li>
@@ -56,9 +56,9 @@
                 <li class="zu-top-nav-li current" id="zh-top-nav-home">
                     <a class="zu-top-nav-link" href="/" id="zh-top-link-home" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_home">首页</a>
                 </li>
-                <li class="zu-top-nav-li " id="zh-top-nav-explore">
-                    <a class="zu-top-nav-link" href="/pusllfeeds">发现</a>
-                </li>
+                <#--<li class="zu-top-nav-li " id="zh-top-nav-explore">-->
+                    <#--<a class="zu-top-nav-link" href="/pusllfeeds">发现</a>-->
+                <#--</li>-->
             <#if (user??)>
                 <li class="top-nav-noti zu-top-nav-li ">
                     <a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button">

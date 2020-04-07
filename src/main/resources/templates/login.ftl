@@ -7,7 +7,7 @@
     <meta name="renderer" content="webkit">
     <meta name="description" content="一个真实的网络问答社区，帮助你寻找答案，分享知识。">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>与世界分享你的知识、经验和见解</title>
+    <title>分享你的知识、经验和见解</title>
     <link rel="dns-prefetch" href="">
     <link rel="stylesheet" href="../styles/login.css">
 
@@ -16,12 +16,12 @@
 <div class="index-main">
     <div class="index-main-body">
         <div class="index-header">
-            <h1 class="logo hide-text"><img src="../images/res/nk.png" alt=""></h1>
+            <h1 class="logo hide-text"><img src="../images/res/gg.png" alt=""></h1>
             <h2 class="subtitle">
                 <#if msg??>
                     ${msg}
                 <#else>
-                与世界分享你的知识、经验和见解
+                分享你的知识、经验和见解
                 </#if>
             </h2>
         </div>
@@ -31,7 +31,7 @@
                     <input type="hidden" name="_xsrf" value="21aa1c8d254df2899b23ab9afbd62a53">
                     <div class="group-inputs">
                         <div class="email input-wrapper">
-                            <input type="text" name="username" aria-label="手机号或邮箱" placeholder="手机号或邮箱" required="">
+                            <input type="text" name="username" aria-label="用户名" placeholder="用户名" required="">
                         </div>
                         <div class="input-wrapper">
                             <input type="password" name="password" aria-label="密码" placeholder="密码" required="">
