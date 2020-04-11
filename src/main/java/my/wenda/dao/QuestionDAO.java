@@ -16,6 +16,7 @@ public interface QuestionDAO {
 
         @Insert({"insert into ",table_name, "(" , insert_fields ,           //插入问题
                 ") values(", insert_values, ")"})
+        @Options(useGeneratedKeys = true, keyProperty = "id")
         int addQuestion(Question question);
 
         @Select({"select ", select_fields, " from ",table_name," where id=#{id}"})        //使用id查找问题

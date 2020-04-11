@@ -26,17 +26,17 @@
                                     <img src="${profileUser.user.headUrl}" class="zm-item-img-avatar">
                                 </a>
                                 <div class="zm-list-content-medium">
-                                    <h2 class="zm-list-content-title"><a data-tip="p$t$buaabarty" href="/user/${profileUser.user.id}" class="zg-link">${profileUser.user.name}</a></h2>
+                                    <h2 class="zm-list-content-title"><a data-tip="p$t$buaabarty" href="/user/${profileUser.user.id?c}" class="zg-link">${profileUser.user.name}</a></h2>
 
                                     <!-- <div class="zg-big-gray">计蒜客教研首席打杂</div> -->
                                     <div class="details zg-gray">
-                                        <a target="_blank" href="/user/${profileUser.user.id}/followers" class="zg-link-gray-normal">${profileUser.followerCount}粉丝</a>
+                                        <a target="" href="/user/${profileUser.user.id}/followers" class="zg-link-gray-normal">${profileUser.followerCount?c}粉丝</a>
                                         /
-                                        <a target="_blank" href="/user/${profileUser.user.id}/followees" class="zg-link-gray-normal">${profileUser.followeeCount}关注</a>
+                                        <a target="" href="/user/${profileUser.user.id}/followees" class="zg-link-gray-normal">${profileUser.followeeCount?c}关注</a>
                                         /
-                                        <a target="_blank" href="#" class="zg-link-gray-normal">${profileUser.commentCount} 回答</a>
-                                        /
-                                        <a target="_blank" href="#" class="zg-link-gray-normal">548 赞同</a>
+                                        <a target="" href="#" class="zg-link-gray-normal">${profileUser.commentCount?c} 回答</a>
+                                        <#--/-->
+                                        <#--<a target="_blank" href="#" class="zg-link-gray-normal">548 赞同</a>-->
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                             <div class="zm-item-meta answer-actions clearfix js-contentActions">
                                                 <div class="zm-meta-panel">
                                                     <a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-123114">
-                                                        <i class="z-icon-follow"></i>关注问题</a>
+                                                        <#--<i class="z-icon-follow"></i>关注问题</a>-->
                                                     <a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
                                                         <i class="z-icon-comment"></i>${vo.question.commentCount?c} 条评论</a>
 

@@ -38,8 +38,10 @@ public class SearchController {
                               @RequestParam(value = "offset", defaultValue = "0") int offset,
                               @RequestParam(value = "count", defaultValue = "10") int count){
         try {
+            if(keyword == "") return "redirect:/";
             List<Question> questionList = searchService.searQuestion(keyword, offset, count, "<em><font color=\"red\">", "</font></em>");
             List<ViewObject> vos = new ArrayList<ViewObject>();
+            int len=0;
             for(Question question: questionList){
                 Question q = questionService.selectQuestionById(question.getId());
                 ViewObject vo = new ViewObject();
@@ -54,7 +56,9 @@ public class SearchController {
                 vo.set("user",userService.getUser(q.getUserId()));
                 vo.set("followCount", followService.getFollowerCount(EntityType.ENTITY_QUESTION, question.getId()));
                 vos.add(vo);
+                ++len;
             }
+            model.addAttribute("vos_len",len);
             model.addAttribute("vos", vos);
             model.addAttribute("keyword", keyword);
             model.addAttribute("title","搜索结果");

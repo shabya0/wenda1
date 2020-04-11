@@ -34,8 +34,9 @@ public class LikeController {
     @RequestMapping(path = {"/like"}, method = {RequestMethod.POST})
     @ResponseBody
     public String like(@RequestParam("commentId") int commentId){
+        ;
         if(hostHolder.getUser() == null){
-            return WendaUtil.getJSONString(999);
+            return WendaUtil.getJSONString(999,"未登录");
         }
 
         Comment comment = commentService.getCommentById(commentId);
@@ -53,7 +54,7 @@ public class LikeController {
     @ResponseBody
     public String dislike(@RequestParam("commentId") int commentId){
         if(hostHolder.getUser() == null){
-            return WendaUtil.getJSONString(999);
+            return WendaUtil.getJSONString(999,"未登录");
         }
         long dislikeCount = likeService.dislike(hostHolder.getUser().getId(), EntityType.ENTITY_COMMENT, commentId);
         return WendaUtil.getJSONString(0, String.valueOf(dislikeCount));

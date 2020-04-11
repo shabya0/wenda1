@@ -46,7 +46,7 @@ public class FollowerController {
     @ResponseBody
     public String  follow(@RequestParam("userId") int userId){
         if(hostHolder.getUser() == null )
-            return WendaUtil.getJSONString(999);
+            return WendaUtil.getJSONString(999,"未登录");
 
         //关注某个用户
         boolean ret = followService.follow(hostHolder.getUser().getId(), EntityType.ENTITY_USER, userId);
@@ -63,7 +63,7 @@ public class FollowerController {
     @ResponseBody
     public String  unfollow(@RequestParam("userId") int userId){
         if(hostHolder.getUser() == null )
-            return WendaUtil.getJSONString(999);
+            return WendaUtil.getJSONString(999,"未登录");
 
         //取消关注某个用户
         boolean ret = followService.unfollow(hostHolder.getUser().getId(), EntityType.ENTITY_USER, userId);
@@ -79,7 +79,7 @@ public class FollowerController {
     @ResponseBody
     public String  followQuestion(@RequestParam("questionId") int questionId){
         if(hostHolder.getUser() == null )
-            return WendaUtil.getJSONString(999);
+            return WendaUtil.getJSONString(999,"未登录");
 
         //判断问题是否存在， 避免地址栏直接输入访问报错
         Question q = questionService.selectQuestionById(questionId);
@@ -105,7 +105,7 @@ public class FollowerController {
     @ResponseBody
     public String  unfollowQuestion(@RequestParam("questionId") int questionId){
         if(hostHolder.getUser() == null )
-            return WendaUtil.getJSONString(999);
+            return WendaUtil.getJSONString(999,"未登录");
 
         //判断问题是否存在， 避免地址栏直接输入访问报错
         Question q = questionService.selectQuestionById(questionId);

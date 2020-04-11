@@ -25,9 +25,6 @@ public interface CommentDAO {
 
     @Delete({"delete from ",table_name," where id=#{id}"})          //根据id删除问题
     void deleteCommentById(int id);
-    //动态sql
-//    @SelectProvider(type = QuestionSQLProvider.class, method = "selectQuestionwhere")
-//    List<Comment> selectLatestQuestions(int userId, int offset, int limit);
 
     @Select({"select ", select_fields, " from ", table_name,
             " where entity_id=#{entityId} and entity_type=#{entityType} order by created_date desc" })

@@ -6694,7 +6694,7 @@ header.navbar .navbar-toggle .icon-bar {
     left: 80px;
     top: 20px;
     z-index: 2;
-    color: #CCC;
+    color: #6351af;
     display: inline-block;
     /*display: block;*/
 
@@ -7438,7 +7438,7 @@ html.in-app body.zhi {
     padding-top:0
 }
 a {
-    color:#25bb9b
+    color:#337ba5
 }
 a:active {
     outline:0
@@ -8814,7 +8814,7 @@ html.no-touchevents .meta-item:hover .z-icon-comment {
     /*text-shadow:0 -1px 0 rgba(0,0,0,.5);*/
     background:#25bb9b;
     background:-webkit-linear-gradient(top,#25bb9b,#00B091);
-    background:linear-gradient(to bottom,#25bb9b,#00B091);
+    background:linear-gradient(to bottom,#1d7fe2,#0865c2);
     border:1px solid #25bb9b;
     box-shadow:0 1px 0 rgba(255,255,255,.2) inset,0 1px 0 rgba(0,0,0,.2)
 }
@@ -14462,9 +14462,8 @@ html.modal-open.flexbox .modal-wrapper .modal-dialog.centered {
     margin:-1px -1px 0;
     padding:10px 15px;
     line-height:14px;
-    background:#25bb9b;
     background:-webkit-linear-gradient(top,#25bb9b,#00B091);
-    background:linear-gradient(to bottom,#25bb9b,#00B091);
+    background:linear-gradient(to bottom,#1D7FE2,#0865C2);
     border:1px solid #00B091;
     border-radius:6px 6px 0 0;
     box-shadow:0 1px 0 rgba(255,255,255,.1) inset,0 1px 1px rgba(0,0,0,.2)

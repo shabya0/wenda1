@@ -7,6 +7,8 @@ import my.wenda.async.EventType;
 import my.wenda.controller.FeedController;
 import my.wenda.model.*;
 import my.wenda.service.*;
+import my.wenda.model.Feed;
+import my.wenda.service.FeedService;
 import my.wenda.util.JedisAdapter;
 import my.wenda.util.RedisKeyUtil;
 import org.slf4j.Logger;
@@ -48,8 +50,8 @@ public class FeedHandler implements EventHandler {
         map.put("userHead", actor.getHeadUrl());
         map.put("username", actor.getName());
 
-        if(model.getType() == EventType.COMMENT ||
-                model.getType() == EventType.FOLLOW && model.getEntityType() == EntityType.ENTITY_QUESTION){
+        if(model.getType() == EventType.COMMENT
+                || model.getType() == EventType.ADD_QUESTION){          //||  model.getType() == EventType.FOLLOW && model.getEntityType() == EntityType.ENTITY_QUESTION
             Question question  = questionService.selectQuestionById(model.getEntityId());
             if(question == null)
                 return null;
@@ -92,8 +94,8 @@ public class FeedHandler implements EventHandler {
 
     @Override
     public List<EventType> getSupportEventTypes() {
-        //评论，关注更新feed
-        return Arrays.asList(new EventType[]{EventType.COMMENT, EventType.FOLLOW});
+        //评论，关注,发布问题更新feed
+        return Arrays.asList(new EventType[]{EventType.COMMENT,EventType.ADD_QUESTION});    // EventType.FOLLOW,
     }
 
     public static void main(String args[]) throws ParseException {
@@ -101,13 +103,7 @@ public class FeedHandler implements EventHandler {
         Calendar date = Calendar.getInstance();
         Date d = new Date();
         date.setTime(d);
-//        String time = format.format(date);
-//        System.out.println(time);
         System.out.println(date.getTime());
-//        System.out.println(time);
-//        FeedService feedService = new FeedService();
-//        java.sql.Date now = format.parse("2020-03-28 01:05:37");
-//        Feed f = feedService.getFeedByCrDate(now);
-//        System.out.println(f.toString());
+
     }
 }

@@ -72,7 +72,7 @@
                     <meta itemprop="answer-url-token" content="66862039">
                     <a class="zg-anchor-hidden" name="answer-22162611"></a>
 
-                    <div class="zm-votebar goog-scrollfloater js-vote" data-id="${comment.comment.id}">
+                    <div class="zm-votebar goog-scrollfloater js-vote" data-id="${comment.comment.id?c}">
                         <#if comment.liked gt 0>
                         <#--点亮状态-->
                             <button class="up js-like pressed" title="赞同">
@@ -81,7 +81,7 @@
                             <button class="up js-like" title="赞同">
                         </#if>
                             <i class="icon vote-arrow"></i>
-                            <span class="count js-voteCount">${comment.likeCount}</span>
+                            <span class="count js-voteCount">${comment.likeCount?c}</span>
                             <span class="label sr-only">赞同</span>
                         </button>
 
@@ -98,15 +98,15 @@
                     </div>
                     <div class="answer-head">
                         <div class="zm-item-answer-author-info">
-                            <a class="zm-item-link-avatar avatar-link" href="" target="_blank" data-tip="p$t$yingxiaodao">
+                            <a class="zm-item-link-avatar avatar-link" href="/user/${comment.user.id?c}" target="" data-tip="p$t$yingxiaodao">
                                 <img src="${comment.user.headUrl}" class="zm-list-avatar avatar"></a>
-                            <a class="author-link" data-tip="p$t$yingxiaodao" target="_blank" href="">${comment.user.name}</a>
+                            <a class="author-link" data-tip="p$t$yingxiaodao" target="_blank" href="/user/${comment.user.id?c}">${comment.user.name}</a>
                         </div>
 
                         <#--评论点赞人数-->
                         <div class="zm-item-vote-info">
                                 <span class="voters text">
-                                    <a href="" class="more text"><span class="js-voteCount">${comment.likeCount}</span>&nbsp;人赞同</a>
+                                    <a href="" class="more text"><span class="js-voteCount">${comment.likeCount?c}</span>&nbsp;人赞同</a>
                                 </span>
                         </div>
                     </div>

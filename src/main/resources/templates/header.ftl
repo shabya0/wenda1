@@ -46,7 +46,7 @@
         <div role="search" id="zh-top-search" class="zu-top-search">
             <form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form">
                 <input type="hidden" name="type" value="content">
-                <label for="q" class="hide-text">搜索</label><input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="${kryword!}"
+                <label for="q" class="hide-text">搜索</label><input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="${keyword!""}"
                                                                   placeholder="搜索你感兴趣的内容..." role="combobox" aria-autocomplete="list"><!--  value  $ {keyword}-->
                 <button type="submit" class="zu-top-search-button"><span class="hide-text">搜索</span><span class="sprite-global-icon-magnifier-dark"></span></button>
             </form>
@@ -56,9 +56,11 @@
                 <li class="zu-top-nav-li current" id="zh-top-nav-home">
                     <a class="zu-top-nav-link" href="/" id="zh-top-link-home" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_home">首页</a>
                 </li>
-                <#--<li class="zu-top-nav-li " id="zh-top-nav-explore">-->
-                    <#--<a class="zu-top-nav-link" href="/pusllfeeds">发现</a>-->
-                <#--</li>-->
+                <#if (user??)>
+                <li class="zu-top-nav-li " id="zh-top-nav-explore">
+                    <a class="zu-top-nav-link" href="/pullfeeds">发现</a>
+                </li>
+                </#if>
             <#if (user??)>
                 <li class="top-nav-noti zu-top-nav-li ">
                     <a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button">

@@ -1,5 +1,8 @@
 package my.wenda.controller;
 
+import my.wenda.async.EventModel;
+import my.wenda.async.EventProducer;
+import my.wenda.async.EventType;
 import my.wenda.model.*;
 import my.wenda.service.*;
 import my.wenda.util.WendaUtil;
@@ -30,6 +33,8 @@ public class QuestionController {
     CommentService commentService;
     @Autowired
     FollowService followService;
+    @Autowired
+    EventProducer eventProducer;
 
     @RequestMapping(value = "/question/add",method = {RequestMethod.POST})
     @ResponseBody
@@ -45,8 +50,11 @@ public class QuestionController {
             question.setTitle(title);
             question.setCommentCount(0);
             question.setCreatedDate(new Date());
-
-            if(questionService.addQuestion(question) > 0 ){
+            int ret = questionService.addQuestion(question);
+            if(ret > 0 ){
+                logger.info("添加问题返回的id："+ret);
+                eventProducer.fireEvent(new EventModel(EventType.ADD_QUESTION).setActorId(question.getUserId())
+                        .setEntityId(ret));
                 return WendaUtil.getJSONString(0);      //成功返回0
             }
 
@@ -85,9 +93,7 @@ public class QuestionController {
         for (Integer userId : users) {
             ViewObject vo = new ViewObject();
             User u = userService.getUser(userId);
-            if (u == null) {
-                continue;
-            }
+            if (u == null)  continue;
             vo.set("name", u.getName());
             vo.set("headUrl", u.getHeadUrl());
             vo.set("id", u.getId());
@@ -100,8 +106,6 @@ public class QuestionController {
         } else {
             model.addAttribute("followed", false);
         }
-
         return "detail";
     }
-
 }

@@ -1,20 +1,22 @@
 package my.wenda.controller;
 
+import com.alibaba.fastjson.JSON;
 import my.wenda.aspect.LogAspect;
 import my.wenda.model.*;
 import my.wenda.service.CommentService;
 import my.wenda.service.FollowService;
 import my.wenda.service.QuestionService;
 import my.wenda.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +64,17 @@ public class HomeController {
         return "index";
     }
 
+    @CrossOrigin
+    @RequestMapping(path={"/more"},method = {RequestMethod.GET, RequestMethod.POST})
+    public Object more(Model model, HttpServletResponse response, HttpServletRequest request, @RequestParam("pages") int currpage){
+        logger.info("进到了more");
+        int offset = (currpage-1)*10;
+//        return JSON.toJSON(getQuestions(0,offset, 10));
+        model.addAttribute("vos",getQuestions(0,offset, 10));
+
+        return "indexMore";
+    }
+
     private List<ViewObject> getQuestions(int userId, int offset, int limit){
         List<Question> questionList = questionService.getLastQuestions(userId,offset,limit);
         List<ViewObject> vos = new ArrayList<ViewObject>();
@@ -75,4 +88,5 @@ public class HomeController {
         }
         return vos;
     }
+
 }

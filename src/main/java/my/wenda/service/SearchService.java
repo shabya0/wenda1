@@ -32,7 +32,7 @@ public class SearchService
         query.setHighlightSimplePre(hlPre);
         query.setHighlightSimplePost(hlPos);
         query.set("hl.fl",question_title_field+","+question_content_field);
-        QueryResponse response = client.query(query);
+        QueryResponse response = client.query(query);//偏移量
         for(Map.Entry<String, Map<String, List<String>>> entry:response.getHighlighting().entrySet()){
             Question q = new Question();
             q.setId(Integer.parseInt(entry.getKey()));

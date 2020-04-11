@@ -22,7 +22,6 @@ public class PassportInterceptor implements HandlerInterceptor {
     //请求开始前调用，return false则请求结束
     @Autowired
     LoginTicketDAO loginTicketDAO;
-
     @Autowired
     private UserDAO userDAO;
 
@@ -30,12 +29,13 @@ public class PassportInterceptor implements HandlerInterceptor {
     HostHolder hostHolder;      //当前登录用户的数据
     private static final Logger logger = LoggerFactory.getLogger(PassportInterceptor.class);
 
-    //根据cookie的token值(rticket)查找用户，不需要重新登录，cookie有效期为一个月
+    //根据cookie的token值(ticket)查找用户，不需要重新登录，cookie有效期为一个月
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String ticket = null;
         if(request.getCookies()!=null){
             for(Cookie cookie: request.getCookies()){
+                //获取token值
                 if(cookie.getName().equals("ticket")){
                     ticket = cookie.getValue();
                     break;
@@ -43,14 +43,13 @@ public class PassportInterceptor implements HandlerInterceptor {
             }
             if(ticket!=null){
                 LoginTicket loginTicket = loginTicketDAO.selectByTicket(ticket);
+                //判断为有效token
                 if(loginTicket == null || loginTicket.getExpired().before(new Date()) || loginTicket.getStatus()!=0){
                     return true;
                 }
-
                 User user = userDAO.getUserById(loginTicket.getUserId());
                  hostHolder.setUsers(user);
             }
-
         }
         return true;
     }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class LogAspect {
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
-    @Before("execution(* com.nowcoder.wenda.controller.*Controller.*(..))")
+    @Before("execution(* my.wenda.controller.*Controller.*(..))")
     public void beforeMethod(JoinPoint joinPoint){
         logger.info("before------------------------------------------------------");
         logger.info(joinPoint.toLongString());
@@ -26,7 +26,7 @@ public class LogAspect {
         logger.info("before:   "+sb.toString());
     }
 
-    @After("execution( * com.nowcoder.wenda.controller.*Controller.*(..))")
+    @After("execution( * my.wenda.controller.*Controller.*(..))")
     public void afterMethod(){
         logger.info("after method------------------------------------------------------");
     }

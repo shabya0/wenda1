@@ -21,9 +21,6 @@ public interface MessageDAO {
 
     @Delete({"delete from ",table_name," where id=#{id}"})          //根据id删除问题
     void deleteMessageById(int id);
-    //动态sql
-//    @SelectProvider(type = QuestionSQLProvider.class, method = "selectQuestionwhere")
-//    List<Comment> selectLatestQuestions(int userId, int offset, int limit);
 
     @Select({"select ", select_fields, " from ", table_name,
             " where conversation_id=#{conversationId} order by created_date desc limit #{offset}, #{limit}" })
@@ -50,7 +47,7 @@ public interface MessageDAO {
 
 
     //查询某conversation_id最新的一条数据跟日期
-//    select * from  message a  where exists(select * from message where conversation_id='32_33' having a.created_date= max(created_date) )
+    //select * from  message a  where exists(select * from message where conversation_id='32_33' having a.created_date= max(created_date) )
     @Select({"select ", insert_fields," from  ", table_name, " a where exists(select * from message where conversation_id=#{conversationId} having a.created_date = max(created_date))"})
     Message getLastedByConversationId(String conversationId);
 }

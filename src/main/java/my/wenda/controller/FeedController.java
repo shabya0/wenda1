@@ -49,6 +49,7 @@ public class FeedController {
         }
         logger.info("feeds:"+feeds.toString());
         model.addAttribute("feeds", feeds);
+        model.addAttribute("title","关注用户的动态");
         return "feeds";
     }
 
@@ -63,6 +64,7 @@ public class FeedController {
         }
         List<Feed> feeds = feedService.getUserFeeds(Integer.MAX_VALUE, followees, 10);
         model.addAttribute("feeds", feeds);
+        model.addAttribute("title","关注用户的动态");
         return "feeds";
     }
 }

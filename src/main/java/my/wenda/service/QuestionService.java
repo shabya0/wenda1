@@ -2,6 +2,8 @@ package my.wenda.service;
 
 import my.wenda.dao.QuestionDAO;
 import my.wenda.model.Question;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.HtmlUtils;
@@ -15,6 +17,7 @@ public class QuestionService {
 
     @Autowired
     SensitiveService sensitiveService;
+    private static final Logger logger = LoggerFactory.getLogger(QuestionService.class);
 
     //添加问题
     public int addQuestion(Question question){
@@ -26,7 +29,7 @@ public class QuestionService {
         question.setContent(sensitiveService.filter(question.getContent()));
 
         int res_count = questionDAO.addQuestion(question);      //返回受影响行数
-        return res_count >0 ?res_count : 0;
+        return res_count >0 ?question.getId() : 0;      //返回插入问题得到的id
     }
 
     //返回用户为userid的最新limit条问题

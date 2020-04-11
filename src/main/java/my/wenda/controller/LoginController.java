@@ -58,7 +58,7 @@ public class LoginController {
             logger.info("包含ticket");
             Cookie cookie = new Cookie("ticket", map.get("ticket"));
 
-            cookie.setMaxAge(3600*24*30*1000);         //设置cookiecu存活时间 1 month
+            cookie.setMaxAge(3600*24*1000);         //设置cookie存活时间 1个月
             cookie.setPath("/");
             response.addCookie(cookie);     //添加cookie返回页面
 

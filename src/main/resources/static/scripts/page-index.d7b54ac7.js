@@ -1,5 +1,7 @@
 (function(z){
-var bS=function(){z.R.call(this)};var cS=function(){(0,window.$)("body").on("click",".org-tip a",function(a){a.preventDefault();z.X.alert({title:"申请注册机构帐号",modal:!0,content:(0,window.$)("#org-tip").html(),buttons:{kC:"确认"}})})};
+    var bS=function(){z.R.call(this)
+    };
+    var cS=function(){(0,window.$)("body").on("click",".org-tip a",function(a){a.preventDefault();z.X.alert({title:"申请注册机构帐号",modal:!0,content:(0,window.$)("#org-tip").html(),buttons:{kC:"确认"}})})};
 var dS=function(){var a=(0,window.$)(".QRCode-card"),b=(0,window.$)(".QRCode-toggleButton"),c=(0,window.$)(".QRCode-toggleButtonText",b);(0,window.$)("body").on("click",function(d){a.is(":visible")?Boolean((0,window.$)(d.target).closest(a).length)||(a.addClass("fadeOutDown").onTransitionEnd(function(){a.hide().removeClass("fadeOutDown")},200),c.text("下载知乎 App")):Boolean((0,window.$)(d.target).closest(b).length)&&(a.addClass("fadeInUp").show().onTransitionEnd(function(){a.removeClass("fadeInUp")},
 200),c.text("关闭二维码"))})};var eS=function(){var a=(0,window.$)(".sign-flow");if(a.length){var b=new fS;b.w(a[0]);b.g("trackRequested",function(a){a.preventDefault();a.label="home_default";z.xi(a)})}};
 var gS=function(){function a(){var a=window.particlesJS;a&&((0,window.$)("\x3cdiv\x3e",{id:"particles"}).appendTo("body"),a("particles",c))}var b=!!window.HTMLCanvasElement,c={particles:{number:{value:20,density:{enable:!0,value_area:1E3}},color:{value:"#e1e1e1"},shape:{type:"circle",stroke:{width:0,color:"#000000"},polygon:{nb_sides:5},image:{src:"img/github.svg",width:100,height:100}},opacity:{value:.5,random:!1,anim:{enable:!1,speed:1,opacity_min:.1,sync:!1}},size:{value:15,random:!0,anim:{enable:!1,
