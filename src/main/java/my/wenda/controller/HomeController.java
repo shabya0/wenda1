@@ -7,6 +7,7 @@ import my.wenda.service.CommentService;
 import my.wenda.service.FollowService;
 import my.wenda.service.QuestionService;
 import my.wenda.service.UserService;
+import my.wenda.util.WendaUtil;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,11 +36,20 @@ public class HomeController {
     @Autowired
     FollowService followService;
 
+    @RequestMapping(path={"/404/"})
+    public  String page404(Model model){
+        model.addAttribute("title","404");
+        return "nullPage";
+    }
+
     @RequestMapping(path = {"/user/{userId}"})
     public String userIndex(Model model, @PathVariable("userId") int userId){
         model.addAttribute("vos", getQuestions(userId, 0, 10));
 
         User user = userService.getUser(userId);
+        if(user == null){
+            return "redirect:/404/";
+        }
         ViewObject vo = new ViewObject();
         vo.set("user", user);
         vo.set("commentCount", commentService.getUserCommentCount(userId));
@@ -55,6 +65,8 @@ public class HomeController {
         model.addAttribute("title",user.getName()+"的主页");
         return "profile";
     }
+
+
 
     @RequestMapping(path={"/","index"},method = {RequestMethod.GET})
     public String index(Model model){
@@ -75,6 +87,34 @@ public class HomeController {
         return "indexMore";
     }
 
+    @RequestMapping(path={"/chgpw"},method = {RequestMethod.GET})
+    public String changepw(Model model){
+        model.addAttribute("title","修改密码");
+        return "changepw";
+    }
+
+    @RequestMapping(path={"/changepwd/"},method = {RequestMethod.POST})
+    public String changepwd(Model model,
+                           @RequestParam("username") String oldpwd,
+                           @RequestParam("password") String newpwd){
+        logger.info("来到了判断密码阶段");
+        User user = hostHolder.getUser();
+        if(!(WendaUtil.MD5(oldpwd + user.getSalt()) ).equals(user.getPassword())){
+            logger.info("密码错误:"+oldpwd+"   "+newpwd);
+            model.addAttribute("msg","旧密码填写错误");
+            model.addAttribute("title","修改密码");
+            return  "changepw";
+        }
+        if(userService.updatePwd(user.getId(),newpwd) > 0){
+            model.addAttribute("重新登录");
+            model.addAttribute("msg","修改密码成功，请重新登录");
+            model.addAttribute("title","重新登录");
+            return "login";
+
+        }else {
+            return "redirect:/404/";
+        }
+    }
     private List<ViewObject> getQuestions(int userId, int offset, int limit){
         List<Question> questionList = questionService.getLastQuestions(userId,offset,limit);
         List<ViewObject> vos = new ArrayList<ViewObject>();
@@ -89,4 +129,8 @@ public class HomeController {
         return vos;
     }
 
+    @RequestMapping(path={"/info_pic/"})
+    public String infoPic(Model model){
+        return "upload";
+    }
 }

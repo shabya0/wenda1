@@ -1,5 +1,4 @@
 <#include "header.ftl">
-<link rel="stylesheet" href="../styles/index.css">
 <link rel="stylesheet" href="../styles/detail.css">
     <div class="zg-wrap zu-main clearfix " role="main">
         <div class="zm-profile-section-wrap zm-profile-followee-page">
@@ -28,15 +27,19 @@
                                 <div class="zm-list-content-medium">
                                     <h2 class="zm-list-content-title"><a data-tip="p$t$buaabarty" href="/user/${profileUser.user.id?c}" class="zg-link">${profileUser.user.name}</a></h2>
 
-                                    <!-- <div class="zg-big-gray">计蒜客教研首席打杂</div> -->
                                     <div class="details zg-gray">
                                         <a target="" href="/user/${profileUser.user.id}/followers" class="zg-link-gray-normal">${profileUser.followerCount?c}粉丝</a>
                                         /
                                         <a target="" href="/user/${profileUser.user.id}/followees" class="zg-link-gray-normal">${profileUser.followeeCount?c}关注</a>
                                         /
-                                        <a target="" href="#" class="zg-link-gray-normal">${profileUser.commentCount?c} 回答</a>
+                                        <a class="zg-link-gray-normal">${profileUser.commentCount?c} 回答</a>
                                         <#--/-->
                                         <#--<a target="_blank" href="#" class="zg-link-gray-normal">548 赞同</a>-->
+                                    </div>
+                                    <div class="chgpassword">
+                                        <a href="/chgpw">修改密码</a>
+                                        /
+                                        <a href="/info_pic/"> 修改头像</a>
                                     </div>
                                 </div>
                             </div>
@@ -75,8 +78,9 @@
                                             <div class="question-description-plain zm-editable-content"></div>
                                         </div>
                                         <div class="expandable entry-body">
-                                            <div class="zm-item-vote">
-                                                <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;" data-bind-votecount="">${vo.followCount}</a></div>
+                                            <#--<div class="zm-item-vote">-->
+                                                <#--<a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;" data-bind-votecount="">${vo.followCount}</a>-->
+                                            <#--</div>-->
                                             <div class="zm-item-answer-author-info">
                                                 <a class="author-link" data-tip="p$b$amuro1230" target="_blank" href="/user/${vo.user.id?c}">${vo.user.name}</a>
                                                 ${vo.question.createdDate?string("yyyy-MM-dd HH:mm:ss")}</div>
@@ -112,6 +116,7 @@
 
                     </div>
                     <a href="javascript:;" id="zh-load-more" class="zg-btn-white zg-r3px zu-button-more">更多</a>
+
                 </div>
             </div>
         </div>

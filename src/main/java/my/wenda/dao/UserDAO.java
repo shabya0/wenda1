@@ -29,5 +29,9 @@ public interface UserDAO {
     @Delete({"delete from ",table_name," where id=#{id}"})          //根据id删除用户
     void deleteUserById(int id);
 
+    @Update({"update user set password=#{newpwd},salt=#{newSalt} where id=#{userId}"})
+    int updatePwd(@Param("userId")int userId, @Param("newpwd")String newpwd, @Param("newSalt")String newSalt);
 
+    @Update({"update user set head_url=#{url} where id=#{userId}"})
+    int updateImg(@Param("userId")int userId, @Param("url")String url);
 }

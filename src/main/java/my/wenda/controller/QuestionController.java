@@ -19,7 +19,7 @@ import java.util.List;
 
 @Controller
 public class QuestionController {
-    private static final Logger logger = LoggerFactory.getLogger(SettingController.class);
+    private static final Logger logger = LoggerFactory.getLogger(QuestionController.class);
 
     @Autowired
     QuestionService questionService;
@@ -68,6 +68,11 @@ public class QuestionController {
     @RequestMapping(value = "/question/{qid}")
     public String questionDetail(Model model, @PathVariable("qid") int qid){
         Question question = questionService.selectQuestionById(qid);
+        if(question == null){
+            logger.info("question 为null  啦");
+            model.addAttribute("title","404");
+            return "nullPage";
+        }
         model.addAttribute("question", question);
         model.addAttribute("user",userService.getUser(question.getUserId()));
         model.addAttribute("title",question.getTitle());

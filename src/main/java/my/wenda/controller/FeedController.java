@@ -12,9 +12,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,9 +66,25 @@ public class FeedController {
             // 关注的人
             followees = followService.getFollowees(EntityType.ENTITY_USER, localUserId, Integer.MAX_VALUE);
         }
-        List<Feed> feeds = feedService.getUserFeeds(Integer.MAX_VALUE, followees, 10);
+        List<Feed> feeds = feedService.getUserFeeds(Integer.MAX_VALUE, followees, 0,10);
         model.addAttribute("feeds", feeds);
         model.addAttribute("title","关注用户的动态");
         return "feeds";
+    }
+
+    @CrossOrigin
+    @RequestMapping(path={"/foundMore"},method = {RequestMethod.GET, RequestMethod.POST})
+    public Object foundMore(Model model, HttpServletResponse response, HttpServletRequest request, @RequestParam("pages") int currpage){
+        logger.info("进到了more");
+        int offset = (currpage-1)*10;
+        int localUserId = hostHolder.getUser() != null ? hostHolder.getUser().getId() : 0;
+        List<Integer> followees = new ArrayList<>();
+        if (localUserId != 0) {
+            // 关注的人
+            followees = followService.getFollowees(EntityType.ENTITY_USER, localUserId, Integer.MAX_VALUE);
+        }
+        List<Feed> feeds = feedService.getUserFeeds(Integer.MAX_VALUE, followees, offset,10);
+        model.addAttribute("feeds", feeds);
+        return "foundMore";
     }
 }

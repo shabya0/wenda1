@@ -22,7 +22,7 @@ public interface FeedDAO {
 
     //动态sql
     @SelectProvider(type = SQLProvider.class, method = "selectUserFeeds")
-    List<Feed> selectUserFeeds( int maxId, List<Integer> userIds, int count);
+    List<Feed> selectUserFeeds( int maxId, List<Integer> userIds,int offset, int count);
 
     @Select({"select * from ", table_name," where id=#{id}"})
     Feed getFeedById(@Param("id") int id);

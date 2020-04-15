@@ -26,6 +26,8 @@ public class SearchService
         List<Question> questionList = new ArrayList<>();
         keyword = "question_title:"+keyword+"\nquestion_content:"+keyword;
         SolrQuery query = new SolrQuery(keyword);
+        if(offset>=2)
+            offset= (offset-1)*count;   //传进来的offse是页数，转换成偏移量,第一次访问offset为0，第二次为2
         query.setRows(count);
         query.setStart(offset);
         query.setHighlight(true);

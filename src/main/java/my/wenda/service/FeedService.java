@@ -18,8 +18,8 @@ public class FeedService {
     private static final Logger logger = LoggerFactory.getLogger(FeedController.class);
 
     //拉模式
-    public List<Feed> getUserFeeds(int maxId, List<Integer> userIds, int count){
-        return feedDAO.selectUserFeeds(maxId, userIds, count);
+    public List<Feed> getUserFeeds(int maxId, List<Integer> userIds, int offset, int count){
+        return feedDAO.selectUserFeeds(maxId, userIds,offset, count);
     }
 
     public int addFeed(Feed feed){

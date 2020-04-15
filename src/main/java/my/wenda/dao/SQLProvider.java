@@ -22,7 +22,7 @@ public class SQLProvider {
 
     //获取feed流   usegas feeddao
     //select * from feed where id< maxId and user_id in (.. , ..) order by id desc limit count
-    public String selectUserFeeds(int maxId, List<Integer> userIds, int count){
+    public String selectUserFeeds(int maxId, List<Integer> userIds,int offset, int count){
         logger.info("SQLProvider_selectUserFeeds.method had done");
         String sql = "select * from feed where id < "+maxId;
         if(userIds.size() != 0){
@@ -32,7 +32,7 @@ public class SQLProvider {
             }
             sql+= ") ";
         }
-        sql+= " order by id desc limit "+count;
+        sql+= " order by id desc limit "+offset+","+count;
         return sql;
     }
 

@@ -34,7 +34,7 @@ public class LoginController {
     @Autowired
     EventProducer eventProducer;
 
-    private static final Logger logger = LoggerFactory.getLogger(SettingController.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
     @RequestMapping(path = {"/reg/"}, method = {RequestMethod.POST})
     public String reg(Model model,
                       @RequestParam("username") String username,

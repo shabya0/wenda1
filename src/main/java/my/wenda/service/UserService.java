@@ -29,6 +29,17 @@ public class UserService {
         return userDAO.getUserById(id);
     }
     public User selectUserByName(String name){ return userDAO.selectUserByName(name); }
+
+    public int updatePwd(int userId, String newpwd){
+        String salt = UUID.randomUUID().toString().substring(1,6);
+        newpwd = WendaUtil.MD5(newpwd + salt);
+        return userDAO.updatePwd(userId, newpwd, salt);
+    }
+
+    public int updateImg(int userId, String url){
+        return userDAO.updateImg(userId, url);
+    }
+
     public Map<String, String> register(String username, String password){
         Map<String, String> map = new HashMap<String, String>();
         if(StringUtils.isBlank(username)){
