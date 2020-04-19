@@ -6,6 +6,7 @@
     <div class="zu-main-content">
         <div class="zu-main-content-inner">
             <ul class="list contents navigable" id="search-res">
+                <p style="font-size: 16px;border-bottom: 0.1px solid #f5efef;padding-bottom: 10px;color: #a9abc5;"> 搜索结果 </p>
                 <#if vos_len==0 ><div class="none-content"><p style="font-size: 16px; padding-top:20px;color: #6f7584;">找不到相关内容呢,要不要换个问题看看...</p></div></#if>
                 <#list vos as vo>
                 <li class="item clearfix" id="item">

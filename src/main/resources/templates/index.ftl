@@ -84,7 +84,7 @@
                                                         <i class="z-icon-fold"></i>收起</button>
                                                 </div>
                                             </div>
-                                            <a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+                                            <#--<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>-->
                                         </div>
                                     </div>
                                 </div>

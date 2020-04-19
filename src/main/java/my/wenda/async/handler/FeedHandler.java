@@ -51,7 +51,7 @@ public class FeedHandler implements EventHandler {
         map.put("username", actor.getName());
 
         if(model.getType() == EventType.COMMENT
-                || model.getType() == EventType.ADD_QUESTION){          //||  model.getType() == EventType.FOLLOW && model.getEntityType() == EntityType.ENTITY_QUESTION
+                || model.getType() == EventType.ADD_QUESTION||  model.getType() == EventType.FOLLOW && model.getEntityType() == EntityType.ENTITY_QUESTION){
             Question question  = questionService.selectQuestionById(model.getEntityId());
             if(question == null)
                 return null;
@@ -95,7 +95,7 @@ public class FeedHandler implements EventHandler {
     @Override
     public List<EventType> getSupportEventTypes() {
         //评论，关注,发布问题更新feed
-        return Arrays.asList(new EventType[]{EventType.COMMENT,EventType.ADD_QUESTION});    // EventType.FOLLOW,
+        return Arrays.asList(new EventType[]{EventType.FOLLOW,EventType.COMMENT,EventType.ADD_QUESTION});    // EventType.FOLLOW,
     }
 
     public static void main(String args[]) throws ParseException {

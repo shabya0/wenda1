@@ -87,6 +87,15 @@ public class HomeController {
         return "indexMore";
     }
 
+    @CrossOrigin
+    @RequestMapping(path={"/moreProfile"},method = {RequestMethod.GET, RequestMethod.POST})
+    public Object moreProfile(Model model, HttpServletResponse response, HttpServletRequest request, @RequestParam("pages") int currpage){
+        logger.info("进到了moreProfile");
+        int offset = (currpage-1)*10;
+        model.addAttribute("vos",getQuestions(hostHolder.getUser().getId(),offset, 10));
+        return "profileMore";
+    }
+
     @RequestMapping(path={"/chgpw"},method = {RequestMethod.GET})
     public String changepw(Model model){
         model.addAttribute("title","修改密码");
@@ -129,8 +138,4 @@ public class HomeController {
         return vos;
     }
 
-    @RequestMapping(path={"/info_pic/"})
-    public String infoPic(Model model){
-        return "upload";
-    }
 }

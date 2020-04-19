@@ -21,6 +21,7 @@ public class CommentService {
 
     public int addComment(Comment comment){
         comment.setContent(HtmlUtils.htmlEscape(comment.getContent()));     //去掉html标签
+        comment.setContent(comment.getContent().replace("\r\n","<br/>"));
         comment.setContent(sensitiveService.filter(comment.getContent()));      //敏感词过滤
         return commentDAO.addComment(comment);
     }

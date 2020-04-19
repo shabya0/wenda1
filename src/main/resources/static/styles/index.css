@@ -9895,7 +9895,7 @@ a>.invisible {
     left: 0
 }
 /*下拉动作，下级菜单显示为可见  debug*/
-/*.top-nav-profile ul:hover ul li{*/
+/*.top-nav-profileMore.ftl ul:hover ul li{*/
     /*display: block;*/
     /*margin: 0;*/
     /*position: absolute;*/

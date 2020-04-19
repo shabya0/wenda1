@@ -28,7 +28,7 @@
                                     </#if>
 
                                     <a title="Barty" class="zm-item-link-avatar" href="/user/${vo.user.id?c}">
-                                        <img src="${vo.user.headUrl}" class="zm-item-img-avatar">
+                                        <img src="${vo.user.headUrl}" class="zm-item-img-avatar" style="height: 40px;width: 40px;">
                                     </a>
                                     <div class="zm-list-content-medium">
                                         <h2 class="zm-list-content-title"><a data-tip="p$t$buaabarty" href="/user/${vo.user.id}" class="zg-link" title="Barty">${vo.user.name}</a></h2>
