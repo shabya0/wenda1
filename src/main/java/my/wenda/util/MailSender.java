@@ -35,7 +35,7 @@ public class MailSender implements InitializingBean {
                                         String template, Map<String, Object> model) {
         try {
             String nick = MimeUtility.encodeText("登录");
-            InternetAddress from = new InternetAddress(nick + "<1574033296@qq.com>");
+            InternetAddress from = new InternetAddress(nick + "<mail@mail.com>");   //邮件主题，带上了邮箱地址
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
 
